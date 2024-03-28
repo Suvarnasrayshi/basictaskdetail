@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRATION</title>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            background-color: #d7fcd7;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form input{
+            width: 100%;
+            padding: 2px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form{
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #0a3626;
+        }
+        .button{
+            padding: 9px 14px;
+            background-color: #0a3626;;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            
+        }
+        #fnamein,#lnamein,#emailmsg,#numbermsg{
+            font-size: 12px;
+            color: rgb(234, 78, 78);
+        }
+        h3{
+            color: #0a3626;
+        }
+        a:link {
+        color: #1f6a4f;
+        text-decoration: none;
+        font-size: 12px;
+      }
+      a:visited {
+        color: #0a3626;
+        text-decoration: none;
+      }
+      
+    </style>
+</head>
+
+<body>
+    <form action="/insert" method="post" name="form" id="myform" onsubmit="return validate()">
+        <center style="color: #ffffff;">Suvarna Srayshi Sinha || 24DEV082</center>
+
+<div class="container">
+    <div class="form">
+        <center>
+
+            <h3>REGISTRATION</h3>
+        </center>
+        <input type="text" id="fname" name="fname" placeholder="First name"><span id="fnamein"></span>
+    </div>
+    <div class="form">
+        <input type="text" id="lname" name="lname" placeholder="Last name"><span id="lnamein"></span>
+    </div>
+    <div class="form">
+        <input type="text" name="email" id="email" placeholder="Email"><span id="emailmsg"></span>
+    </div>
+    <div class="form">
+        <input type="text" name="phone" id="phone" placeholder="Phone Number"><span id="numbermsg"></span>
+    </div>
+    <center>
+
+        <input type="submit" class="button" value="REGISTRATION">
+        
+        
+        <p> Already have account?</p>
+         <a href="/loginat" style="font-size: 15px;">LOGIN</a>
+    </center>
+</div>
+</form>
+    <script>
+          function validate() {
+            let input = document.getElementsByTagName("input");
+            valid = true;
+            for (let i = 0; i < 4; i++) {
+                const x = document.forms["form"][input[i].name];
+                if (x.name == "fname") {
+                    fnamein = document.getElementById("fnamein");
+                    if (x.value == "") {
+                        fnamein.innerHTML = "Required";
+                        valid = false;
+                    }
+                    else if (!/^[a-z ,.'-]+$/i.test(x.value)) {
+                        fnamein.innerHTML = "Characters only";
+                        valid = false;
+                    }
+                }
+                if (x.name == "lname") {
+                    lnamein = document.getElementById("lnamein");
+                    if (x.value == "") {
+                        lnamein.innerHTML = "Required";
+                        valid = false;
+                    }
+                    else if (!/^[a-z ,.'-]+$/i.test(x.value)) {
+                        lnamein.innerHTML = " Characters only";
+                        valid = false;
+                    }
+                }
+
+                if (x.name == "email") {
+                    emailmsg = document.getElementById("emailmsg");
+                    if (x.value == "") {
+                        emailmsg.innerHTML = "Required";
+                        valid = false;
+                    }
+                    else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(x.value)) {
+                        emailmsg.innerHTML = "Enter Valid Email-id";
+                        valid = false;
+                    }
+                }
+
+                if (x.name == "phone") {
+                    numbermsg = document.getElementById("numbermsg");
+                    if (x.value == "") {
+                        numbermsg.innerHTML = "Required";
+                        valid = false;
+                    }
+                    else if (!/^\d{10}$/.test(x.value)) {
+                        numbermsg.innerHTML = "Enter 10 digits";
+                        valid = false;
+                    }
+                }
+            }
+            return valid;
+        }
+    </script>
+</body>
+
+</html>

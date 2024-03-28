@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body onload="addmoretable()" style="background-color:#ff6666;">
+        <style>
+            table{
+               border-style: solid;
+               margin:auto;
+               margin-top: 100px;
+               width:400px;
+               height:400px;
+           }
+          tr, td{
+               width: 50px;
+               height: 50px;
+               border-style: solid;
+               margin:auto;
+               margin-top: 100px;
+           }
+       </style>
+         <centre>Exercise 2</centre>
+         <h4>Suvarna Srayshi Sinha</h4>
+         <h4>24DEV082</h4>
+      <div id="countdown"></div>
+
+       score:<div id="scorevalue"></div>
+        <table id="table1">
+            <tr id="row1">
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td onclick=""></td>
+                <td></td>
+            </tr>
+            
+            <script language="Javascript" type="text/Javascript"> 
+
+                var timeleft = 5;
+                var dtimer = setInterval(function(){
+                if(timeleft <= 0){
+                    clearInterval(dtimer);
+                    document.getElementById("countdown").innerHTML = "Finished";
+                    document.getElementsByTagName("body")[0].innerHTML=`
+                    <h2 style="margin-top:300px; margin-left:40%";>score :${score}</h2>`;
+                    let button = document.createElement('BUTTON');
+                    button.innerHTML="play Again";
+                    button.style.marginLeft = '40%';
+                    button.addEventListener("click",function()
+                    {
+                        window.location.reload();
+                    });  
+                    document.getElementsByTagName("body")[0].appendChild(button);
+                } else {
+                    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+                }
+                timeleft -= 1;
+                }, 1000);
+
+            var score=0; 
+            function getcolor()
+                    {
+                        var red= Math.floor(Math.random()*(255-0));
+                        var green= Math.floor(Math.random()*(255-0));
+                        var blue= Math.floor(Math.random()*(255-0));
+                        return {red,green,blue};
+                    }
+                function addmoretable()
+                {  
+                    var color1= getcolor().red;
+                    var color2= getcolor().green;
+                    var color3= getcolor().blue;
+                    var table1= document.getElementById("table1");
+                    var td= table1.getElementsByTagName("td");
+                    var randomvalue= Math.floor(Math.random()*(td.length-0));
+                    console.log(td.length);
+                    for(var i=0; i< td.length;i++)
+                    {
+                        if(i===randomvalue){
+                            td[i].style.backgroundColor="rgba("+color1+","+color2+","+color3+",0.4)";
+                        }
+                        else{
+                            td[i].style.backgroundColor="rgba("+color1+","+color2+","+color3+")";
+                            td[i].removeEventListener("click",addevent);   
+                            
+                        }
+
+                    }
+                   td[randomvalue].addEventListener("click", addevent)
+                }
+                function addevent(){
+                    addrow();
+                        addcolumn();
+                      addmoretable(); 
+                      score++;
+                     document.getElementById('scorevalue').innerHTML=score;
+                }
+
+                function addrow()
+            {
+                var table= document.getElementById("table1");
+                var cols = document.getElementById("row1").cells.length;
+                var row = table.insertRow();
+                for(i=0;i<cols;i++)
+                {
+                    row.insertCell();
+                }
+            }
+
+
+                function addcolumn()
+            {
+                var mytable= document.getElementById("table1");
+                for(i=0;i<mytable.rows.length;i++)
+                {
+                    var cel=mytable.rows[i].insertCell(mytable.rows[i].cells.length);
+                    cel.innerHTML=" ";
+                }
+            }
+                </script>
+        </table>
+    </body>
+</html>

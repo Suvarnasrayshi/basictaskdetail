@@ -1,0 +1,122 @@
+<!DOCTYPE html> 
+<html> 
+	
+<head> 
+	<meta name="viewport" content= 
+		"width=device-width, initial-scale=1.0"> 
+</head> 
+
+<body> 
+    <style>
+        table{
+           border-style: solid;
+           margin:auto;
+           margin-top: 100px;
+           width:350px;
+           height:350px;
+       }
+      tr, td{
+           width: 50px;
+           height: 50px;
+           border-style: solid;
+           margin:auto;
+           margin-top: 100px;
+           text-align: center;
+       }
+       p{
+        text-align: center;
+       }
+   </style>
+	<div id="main"> 
+        <h3>Suvarna Srayshi Sinha</h3>
+        <h3>24DEV082</h3>
+			Game starts by just Tap on 
+			box<br><br>First Player starts as 
+			<b>Player X </b>And Second Player as 
+			<b>Player 0</b> 
+            <strong> <p id="result"></p> </strong>
+		<table id="table">
+            <tr>
+                <td onclick="make(0,0)"></td>
+                <td onclick="make(0,1)"></td>
+                <td onclick="make(0,2)"></td>
+            </tr>
+            <tr>
+                <td onclick="make(1,0)"></td>
+                <td onclick="make(1,1)"></td>
+                <td onclick="make(1,2)"></td>
+            </tr>
+            <tr>
+                <td onclick="make(2,0)"></td>
+                <td onclick="make(2,1)"></td>
+                <td onclick="make(2,2)"></td>
+            </tr>
+        </table>
+		
+		<br><br><br> 
+            <script>
+
+                let board = [
+                    ['','',''], ['','',''], ['','',''],
+                ];
+
+                let cp ='X';
+                function make(row,col){
+                    if(board[row][col]=== ''){
+                        board[row][col]=cp;
+
+                        document.getElementById('table').rows[row].cells[col].innerHTML = cp;
+                        
+                        if(winevent())
+                        {
+                            document.getElementById('result').innerHTML = cp +' wins';
+                            setTimeout(() =>{
+                                window.location.reload();
+                            },600);
+                        }
+                        if(draw())
+                        {
+                            document.getElementById('result').innerHTML = 'It is a draw';
+                            setTimeout(() =>{
+                                window.location.reload();
+                            },600);
+                        }
+                        else{
+                            cp = cp ==='X'?'O':'X';
+                        }
+                    }
+                }
+                function winevent()
+                {
+                    for(let i=0;i<3;i++)
+                    {
+                        if((board[i][0]===cp && board[i][1]===cp && board[i][2]===cp) || (board[0][i]===cp && board[1][i]===cp && board[2][i]===cp))
+                            {
+                                return true;
+                            }}
+                         
+                        if((board[0][0]===cp && board[1][1]===cp && board[2][2]===cp) || (board[0][2]===cp && board[1][1]===cp && board[2][0]===cp))
+                        {
+                            return true;
+                        } 
+                        return false;
+                }
+                function draw()
+                {
+                    for(let row of board)
+                    {
+                        for(let cell of row)
+                        {
+                            if (cell===''){
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+                </script>
+		<br><br> 
+	</div> 
+</body> 
+
+</html>

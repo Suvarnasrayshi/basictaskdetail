@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Details</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 60%;
+      }
+
+      td,
+      th {
+        border: 1px solid black;
+        padding: 8px;
+      }
+      thead {
+        color: #1f6a4f;
+      }
+      a:link {
+        color: #1f6a4f;
+        text-decoration: none;
+      }
+      a:visited {
+        color: #1f6a4f;
+        text-decoration: none;
+      }
+
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .msg{
+            text-align: center;
+            background-color: #d7fcd7;
+            color: #0a3626;
+            height: 100px;
+            width: 80%;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+    </style>
+  </head>
+
+  <body style=" background-color: black;">
+<form>
+</form>
+<div class="msg">
+<center>
+
+  <input type="hidden" id="id" name="id" value="<%=result.id %>" />
+  <b><p>Copy the link and paste it on the URL</p></b>
+  <a href="/password?id=<%=result.id %>&activation=<%=result.activation %>">localhost:3021/password?id=<%=result.id %>&activation=<%=result.activation %></a>
+</center>
+</div>
+  </body>
+</html>

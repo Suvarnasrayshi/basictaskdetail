@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Sorting Algorithm</title>
+    </head>
+    <body>
+        JAVASCRIPT EXERSICE
+        <h4>Suvarna Srayshi Sinha</h4>
+        <h4>24DEV082</h4>BUBBLE SORT <BR>
+        Unsorted Array:<br>
+        <input type="text" id="text"><br><br>
+
+        <input type="button" onclick="myFunction()" value="Bubble Sort">
+        <input type="button" onclick="insert()" value="Insertion Sort"><br>
+
+        Sorted Array:<p id="demo"></p>
+
+        <script>
+
+    function myFunction(){
+                 testdata= document.getElementById("text").value;
+                 data= testdata.split(" ");
+                 arr=[];
+                 for(var t=0;t<data.length;t++)
+                 {
+                    arr.push(parseInt(data[t]));
+                    bubble(arr);
+                 }
+                }
+                 function bubble(data){
+                for (var i = 0; i < data.length-1; i++) 
+            {
+                for (var j = 0; j < (data.length-i-1); j++)
+                {
+                    if (data[j] > data[j + 1])
+                    {
+                    var swap=data[j];
+                    data[j]=data[j+1];
+                    data[j+1]=swap;
+                    }
+                }
+            }
+            console.log(data);
+            document.getElementById("demo").innerHTML = data;
+            }
+
+    function insert(){
+                var testdata= document.getElementById("text").value;
+                 var data= testdata.split(" ");
+                var arr=[];
+                 for(var t=0;t<data.length;t++)
+                 {
+                    arr.push(parseInt(data[t]));
+                    insertionSort(arr);
+                 }
+                }
+    function insertionSort(arr) 
+    { 
+        let i, key, j; 
+        for (i = 1; i < arr.length; i++) 
+        { 
+            key = arr[i]; 
+            j = i - 1; 
+            while (j >= 0 && arr[j] > key) 
+            { 
+                arr[j+1] = arr[j]; 
+                j = j-1; 
+            } 
+            arr[j+1] = key; 
+        } 
+        console.log(arr);
+        document.getElementById("demo").innerHTML = arr;
+    } 
+    </script>
+    
+ </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "combination-project",
+  "version": "1.0.0",
+  "description": "combination of all the projects done in the trainee period",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suvarnasrayshi/combination-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Suvarnasrayshi/combination-project/issues"
+  },
+  "homepage": "https://github.com/Suvarnasrayshi/combination-project#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-router": "^0.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "md5": "^2.3.0",
+    "mysql2": "^3.9.3",
+    "path": "^0.12.7"
+  }
+}

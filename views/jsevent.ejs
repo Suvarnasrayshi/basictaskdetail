@@ -1,0 +1,157 @@
+<html>  
+    <head> <title>Javascript Events</title> </head>  
+    <body onload="window.alert('Page successfully loaded');">  
+        <style>
+            table{
+                border-style: dotted;
+                width:550px;
+                height:550px
+            }
+            tr{
+                border-style: 1px solid;
+            }
+            td{
+                border-style: solid;
+            }
+        </style>
+    <script language="Javascript" type="text/Javascript">  
+        function onclickevent()  
+    {  
+        alert("onclick triggered");  
+    }  
+    function onmouseoverevent()
+    {
+        alert("onmouseover triggered");  
+    }
+    function onmouseoutevent()
+    {
+        alert("onmouseout triggered");  
+    }
+    function onmousedownevent()
+    {
+        alert("onmousedown triggered");  
+    }
+    function onmouseupevent()
+    {
+        alert("onmouseup triggered");  
+    }
+    function onmousemoveevent()
+    {
+        alert("onmousemove triggered");
+    }
+    function onkeydownevent()
+    {
+        alert("onkeydown triggered");
+    }
+    function onkeyupevent()
+    {
+        alert("onkeyup triggered");
+    }
+    function onfocusevent(x)
+    {
+        x.style.background = "red";
+    }
+    function onblurevent()
+    {
+        let x = document.getElementById("fname");
+         x.value = x.value.toUpperCase();
+    }
+    function onchangeevent()
+    {
+        alert("onchange triggered");
+    }
+    function onloadevent()
+    {
+        alert("onload triggered");
+    }
+    function onunloadevent()
+    {
+        window.close();
+    }
+    function onresizevent()
+    {
+        alert("onresize triggered");
+    }
+    </script>  
+    <table>
+            <tr>
+                <td>
+                    <input type="submit" value="onclickevent" onclick="onclickevent()">
+                </td>
+                <td style="background-color: cornsilk;"></td>
+                <td>
+                    <input type="submit" value="onmouseoverevent" onmouseover="onmouseoverevent()">
+                </td>
+            </tr>
+               <tr>
+                <td style="background-color: darkslategray;"></td>
+                 <td>
+                    <input type="submit" value="onmouseoutevent" onmouseout="onmouseoutevent()">
+                </td>
+                <td style="background-color: darkslategray;"></td>
+                </tr>
+                <tr>
+                <td>
+                    <input type="submit" value="onmouseupevent" onmouseup="onmouseupevent()">
+                </td>
+                <td style="background-color: cornsilk;"></td>
+                <td>
+                    <input type="submit" value="onmousemoveevent" onmousemove="onmousemoveevent()">
+                </td>
+            </tr>
+        <tr>
+           
+        </tr>
+        <tr>
+            <td style="background-color: darkslategray;"></td>
+            <td>
+                <input type="submit" value="onmousedownevent" onmousedown="onmousedownevent()">
+            </td>
+            <td style="background-color: darkslategray;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" value="onkeydownevent" onkeydown="onkeydownevent()">
+                </td>
+                <td style="background-color: cornsilk;"></td>
+                <td>
+                    <input type="text" value="onkeyupevent" onkeyup="onkeyupevent()">
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: darkslategray;"></td>
+            <td>
+                <select id="mySelect" value="onchangeevent" onchange="onchangeevent()">
+                    <option value="onchange">onchange</option>
+                    <option value="onchange1">onchange1</option>
+                  </select>
+            </td>
+            <td style="background-color: darkslategray;"></td>
+            </tr>
+        <tr>
+            <td>
+                <input type="submit" value="onfocusevent" onfocus="onfocusevent(this)">
+            </td>
+            <td style="background-color: cornsilk;"></td>
+            <td>
+                <input input type="text" id="fname" value="onblurevent" onblur="onblurevent()">
+            </td></tr>
+            <tr>
+                <td style="background-color: darkslategray;"></td>
+            <td>
+                <input type="submit" value="onresizevent" onresize="onresizevent()">
+            </td>
+            <td style="background-color: darkslategray;"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="onload" onload="onloadevent()">
+            </td>
+            <td style="background-color: cornsilk;"></td>
+            <td>
+                <input type="submit" value="onunloadevent" onclick="onunloadevent()">
+            </td></tr>
+           
+    </table>
+    </body>  
+    </html>  
