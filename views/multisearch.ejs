@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+   <style>
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td,th{
+            border: 1px solid black;
+            padding: 8px;
+        }
+        #myDIV{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <center>Suvarna Srayshi Sinha || 24DEV082</center>
+    <H3>ATTENDANCE OF STUDENTS</H3>
+  
+
+    <form method="get" action="/?page=<%=p%>">
+        
+        <div class="id">
+    <label>ID</label>
+
+     <input type="text" name="studentid" id="studentid" placeholder="search ID here" autofocus>
+        <input type="submit" value="go">
+        </div>
+       <br>
+       <br>
+   </form>
+   <button onclick="myFunction()">Show more</button>
+   <div id="myDIV">
+   <form method="get" action="/?page=<%=p%>">
+
+
+    <label>First Name</label>
+       <input type="text" name="firstname" placeholder="search Firstname here">
+      
+       <label>Last Name</label>
+        <input type="text" name="lastname" placeholder="search Lastname here">
+       
+     <label>City</label>
+       <input type="text" name="city" placeholder="search city here">
+       
+       <label>Gender</label>
+       <input type="text" name="gender" placeholder="search gender here">
+
+       <label>Condition</label>
+       <select name="operator">
+           <option value="and">AND</option>
+           <option value="or">OR</option>
+
+       </select>
+       <input type="submit" value="View">
+    </div> 
+</form>
+
+<br><br>
+    <table>
+        <thead>
+            <tr><br>
+                <th>ID</th>
+                <th>First Name</a></th>
+                <th>Last Name</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>degree</th>
+                <th>college</th>
+                <th>department</th>
+                <th>parentname</th>
+                <th>gender</th>
+               </tr>
+            </thead>
+                <tbody> 
+                   
+             <div>
+
+                <%- include('./multisearchpage',{p,last,limit,result,studentid,firstname,lastname,city,gender}); %> 
+             </div>
+           
+               <% for(let i = 0; i < result.length; i++ ) { %>
+                <tr>
+                        <td><%= result[i].studentid %></td>
+                        <td><%= result[i].firstname %></td>
+                        <td><%= result[i].lastname %></td>
+                        <td><%= result[i].city %></td>
+                        <td><%= result[i].country %></td>
+                        <td><%= result[i].degree %></td>
+                        <td><%= result[i].college %></td>
+                        <td><%= result[i].department %></td>
+                        <td><%= result[i].parentname %></td>
+                        <td><%= result[i].gender %></td>
+                    </tr>
+              <%  } %>
+             
+            </tbody> 
+    </table>
+
+    <script>
+        function myFunction() {
+  var x = document.getElementById("myDIV");
+  if ( x.style.display == 'block') {
+    x.style.display = 'none';
+  } else {
+    x.style.display = "block";
+  }
+}
+
+    </script>
+</body>
+</html>

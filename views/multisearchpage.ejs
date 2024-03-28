@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <style>
+        .container{
+            display: flex;
+            float: right;
+        }
+        .container i{
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid rgb(219, 206, 158);
+            background-color: rgb(190, 238, 238);
+        }
+        .page{
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid rgb(219, 206, 158);
+            background-color: rgb(190, 238, 238);
+        }
+    </style>
+     <div class="container">
+        <%if(Number(p)!=1){ %>
+        <a href="/multisearch?page=1&studentid=<%=studentid%>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>">
+            <i class="fa-solid fa-angles-left"></i></a>
+            <a href="/multisearch?page=<%=Number(p)-1 %>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>">
+                <i class="fa-solid fa-angle-left"></i></a>
+                <%}%>
+            <div class="page"><%=p%></div>
+            <%if(Number(p)!=last){ %>
+            <a href="/multisearch?page=<%=Number(p)+1 %>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>">
+                <i class="fa-solid fa-angle-right"></i></a>
+            <a href="/multisearch?page=<%=last%>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>" >
+                <i class="fa-solid fa-angles-right"></i></a>
+                <%}%>
+      </div>
+</body>
+</html>

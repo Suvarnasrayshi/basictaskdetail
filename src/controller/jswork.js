@@ -185,5 +185,55 @@ const getsortidname = async (req, res) =>{
             });
         };
 
+
+        const multisearch = async (req, res) =>{
+            const p = req.query.page || 1;
+            const limit = 100;
+            const last = Math.ceil(200 / 100);
+            const offset = (p - 1) * limit;
+            const studentid = req.query.studentid;
+            const firstname = req.query.firstname;
+            const lastname = req.query.lastname;
+            const city = req.query.city;
+            const gender = req.query.gender;
+            const operator = req.query.operator;
+            const startindex = (p-1)*10;
+            const lastindex =p*10;
+        
+        try{
+            if (studentid) {
+                var sql = `select * from student_master where studentid=${studentid}`;
+                console.log(sql);
+            }
+            else {
+                let array = [];
+                if (firstname) array.push(`firstname = '${firstname}'`)
+                if (lastname) array.push(`lastname = '${lastname}'`)
+                if (gender) array.push(`gender = '${gender}'`)
+                if (city) array.push(`city = '${city}'`)
+        
+        
+                let where = '';
+                if (array.length > 0) {
+                    where = 'where ' + array.join(` ${operator} `);
+                }
+                sql = `select * from student_master ${where}`;
+            
+        
+            }
+            con.query(sql, (err, result) => {
+                if (err) console.log(err);
+                else {
+                    const limit = 100;
+               
+                  res.render('multisearch', { result,studentid,firstname,lastname,city,gender, p, last,limit});
+          
+                }
+              })
+        }
+        catch (err) {
+            console.error(err);
+          }
+        };
 module.exports ={gettictactoe,getsortingalgo,getkukucube,getdynamic_table,getjsevent,getcitystate,getsortidname,getattendance,getresult,getrecord,getdynamicsearch
-,getcolumnsearch};
+,getcolumnsearch,multisearch};

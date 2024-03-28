@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const con = require("../config/connection");
 const login = express.Router();
 
-const{gettictactoe,getsortingalgo,getkukucube,getdynamic_table,getjsevent,getcitystate,getsortidname,getattendance,getresult,getrecord,getdynamicsearch,getcolumnsearch} =require('../controller/jswork');
+const{gettictactoe,getsortingalgo,getkukucube,getdynamic_table,getjsevent,getcitystate,getsortidname,getattendance,getresult,getrecord,getdynamicsearch,multisearch
+    ,getcolumnsearch} =require('../controller/jswork');
 
 
 login.route("/dynamic_table").get(getdynamic_table);
@@ -17,5 +18,5 @@ login.route("/result").get(getresult)
 login.route("/record").get(getrecord)
 login.route("/dynamicsearch").get(getdynamicsearch)
 login.route("/columnsearch").get(getcolumnsearch)
-
+login.route("/multisearch").get(multisearch)
 module.exports = login;
