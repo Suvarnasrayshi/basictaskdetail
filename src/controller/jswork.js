@@ -235,5 +235,100 @@ const getsortidname = async (req, res) =>{
             console.error(err);
           }
         };
+
+
+        const delimetersearch = async (req, res) =>{
+            const p = req.query.page || 1;
+            const limit = 100;
+            const last = Math.ceil(200 / 100);
+            const offset = (p - 1) * limit;
+        
+            var sql = `select * from student_master`;
+            const input = req.query.input;
+            firstname = "";
+            lastname = "";
+            city = "";
+            gender = "";
+            let array = [];
+            let preschar='';
+            if (req.query.input) {
+               
+                
+                for (i = 0; i < input.length; i++) {
+                    if (input[i] == '^' || input[i] == '$' || input[i] == '{'|| input[i] == '_') {
+                       if(preschar!="")
+                       {
+                        array.push(preschar);
+                        preschar="";
+                       }
+                    preschar += input[i];
+                    }
+                    else{
+                        preschar += input[i];
+                        if(i===input.length-1|| input[i+1]=='^'||input[i+1] == '$' || input[i+1] == '{'|| input[i] == '_')
+                        {
+                        array.push(preschar);
+                        preschar="";
+                        }
+                        }
+                    }
+                }
+                
+        
+             console.log(array);
+        
+            var fname =[];
+            var lname =[];
+            var gender1 =[];
+            var citycode =[];
+        
+            array.forEach((e) =>{
+                if(!sql.includes('where')) sql += ` where `;
+                if(e.charAt(0) == '_') fname.push(`firstname like '%${e.slice(1)}%'`);
+                if(e.charAt(0) == '^') lname.push(`lastname like '%${e.slice(1)}%'`);
+                if(e.charAt(0) == '$') gender1.push(`gender like '%${e.slice(1)}%'`);
+                if(e.charAt(0) == '{') citycode.push(`city like '%${e.slice(1)}%'`);
+        
+            });
+        
+            if(fname.length>0) sql+= fname.join(" OR ")+ " AND ";
+            if(lname.length>0) sql+= lname.join(" OR ")+ " AND ";
+            if(gender1.length>0) sql+= gender1.join(" OR ")+ " AND ";
+            if(citycode.length>0) sql+= citycode.join(" OR ")+ " AND ";
+        
+            if(sql.includes('where')) sql= sql.slice(0,-4); 
+        
+            console.log(sql);
+            con.query(sql, (err, result) => {
+                if (err) console.log(err);
+                else {
+        
+                    res.render('delimetersearch', { result ,input});
+        
+                }
+            })
+        };
+
+
+
+        const getapifetch = async (req, res) =>{
+            try {
+            //  res.sendFile(path.join(__dirname,"views","index.html"));
+            res.render('fetchapiindex')
+            } catch (error) {
+             console.log(error);
+            }
+           };
+         
+           const apifetch = async (req, res) =>{
+        //    app.get("/:id",async(req,res)=>{
+             try {
+            //   res.sendFile(path.join(__dirname,"views","users.html"));
+            res.render('fetchapiuser')
+             } catch (error) {
+              console.log(error);
+             }
+            };
+         
 module.exports ={gettictactoe,getsortingalgo,getkukucube,getdynamic_table,getjsevent,getcitystate,getsortidname,getattendance,getresult,getrecord,getdynamicsearch
-,getcolumnsearch,multisearch};
+,getcolumnsearch,multisearch,delimetersearch,getapifetch,apifetch};

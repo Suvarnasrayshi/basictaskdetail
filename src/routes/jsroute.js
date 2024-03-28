@@ -4,7 +4,7 @@ const con = require("../config/connection");
 const login = express.Router();
 
 const{gettictactoe,getsortingalgo,getkukucube,getdynamic_table,getjsevent,getcitystate,getsortidname,getattendance,getresult,getrecord,getdynamicsearch,multisearch
-    ,getcolumnsearch} =require('../controller/jswork');
+    ,getcolumnsearch,delimetersearch,getapifetch,apifetch} =require('../controller/jswork');
 
 
 login.route("/dynamic_table").get(getdynamic_table);
@@ -19,4 +19,7 @@ login.route("/record").get(getrecord)
 login.route("/dynamicsearch").get(getdynamicsearch)
 login.route("/columnsearch").get(getcolumnsearch)
 login.route("/multisearch").get(multisearch)
+login.route("/delimetersearch").get(delimetersearch)
+login.route("/apifetch").get(getapifetch)
+login.route("/:id").get(apifetch)
 module.exports = login;

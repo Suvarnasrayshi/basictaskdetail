@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Detail</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid;
+
+    }
+
+    a:link,
+    a:visited {
+      color: black;
+      text-decoration: none;
+    }
+
+    .page {
+      display: flex;
+      justify-content: center;
+    }
+
+  </style>
+</head>
+
+<body onload="fetchdata()">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>UserID</th>
+          <th>ID</th>
+          <th>title</th>
+          <th>body</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+
+      </tbody>
+    </table>
+  </div>
+  <div class="page">
+    <input type="button" value="<" onclick="prev()">
+    <p id="pageno" style="margin-top:20px;">1</p>
+    <input type="button" value=">" onclick="next()">
+  </div>
+  <script>
+
+    var page = 10;
+    var max = 0;
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    async function fetchdata() {
+      await fetch(url, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then(data => {
+          max = data.length;
+          console.log(data);
+          if (data.length > 0) {
+
+            var dataentry = "";
+            data.slice(page - 10, page).forEach((itemData) => {
+              dataentry += "<tr>";
+              dataentry += "<td>" + itemData.userId + "</td>";
+              dataentry += "<td>" + itemData.id + "</td>";
+              dataentry += "<td>" + itemData.title + "</td>";
+              dataentry += "<td>" + itemData.body + "</td>";
+              dataentry += "<td>" + "<a href='" + itemData.id + "'>" + "Details" + "</a></td></tr>";
+            });
+            document.getElementById('data').innerHTML = dataentry;
+          }
+        })
+    }
+    pageno = document.getElementById("pageno");
+    const prev = () => {
+      if (page != 10) {
+        page -= 10;
+        p = page / 10;
+        pageno.innerHTML = p;
+        fetchdata();
+      }
+    }
+    const next = () => {
+      if (page != max) {
+        page += 10;
+        p = page / 10;
+        pageno.innerHTML = p;
+        fetchdata();
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>
