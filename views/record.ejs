@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>Suvarna Srayshi Sinha || 24DEV082</center>
+    <H1>RESULT</H1>
+
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Subject</th>
+                <th colspan="2">Terminal</th>
+                <th colspan="2">Prelim</th>
+                <th colspan="2">Final</th>
+                <th rowspan="2">Total</th>
+            </tr>
+            <tr>
+                <th>Theory</th>
+                <th>Practical</th>
+                <th>Theory</th>
+                <th>Practical</th>
+                <th>Theory</th>
+                <th>Practical</th>
+            </tr>
+        </thead>
+        <tbody>
+            ID:<%= result[0].studentid %><br />
+                Name:<%= result[0].firstname %>
+                    <form action="/record" method="post">
+                        <% for(let i=0; i < result.length; i+=3 ) { %>
+                            <tr>
+                                <td>
+                                    <%= result[i].subname %>
+                                </td>
+                                <% for(let index=i; index < i + 3; index++ ) { %>
+                                    <% if(result[index].studentid==result[i].studentid) { %>
+                                        <td>
+                                            <%= result[index].practical %>
+                                        </td>
+                                        <td>
+                                            <%= result[index].theory %>
+                                        </td>
+
+                                        <% } %>
+                                            <% } %>
+                                                <td>
+                                                    <%= Number(result[i].practical) + Number(result[i].theory) +
+                                                        Number(result[i+1].practical) + Number(result[i+1].theory) +
+                                                        Number(result[i+2].practical) + Number(result[i+2].theory) %>
+                                                </td>
+                            </tr>
+                            <% } %>
+                    </form>
+                    <br />
+                    Attendance: <%= parseFloat((result2[0].present/91)*100).toFixed(2) %>%
+        </tbody>
+    </table>
+</body>
+
+</html>

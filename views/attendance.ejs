@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance List</title>
+   <style>
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td,th{
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <center>Suvarna Srayshi Sinha || 24DEV082</center>
+    <H1>LIST OF STUDENTS</H1>
+    <div>
+        <%- include('./attendancepage',{p,m}); %>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</a></th>
+                <th>Present</th>
+                <th>Percentage</th>
+               </tr>
+            </thead>
+                <tbody> 
+                    
+                    <% for(let i = 0; i < result.length; i++ ) { %>
+                        <tr>
+                            <td><%= result[i].studentid %></td>
+                            <td><%= result[i].firstname %></td>
+                            <td><%= result[i].presentDay %></td>
+                            <% if(m=='december2023'){ %>
+                                <td>
+                                    <%= parseFloat((result[i].presentDay/31)*100).toFixed(2) %> %
+                                </td>
+                           <% } %>
+                           <% if(m=='january2024'){ %>
+                            <td>
+                                <%= parseFloat((result[i].presentDay/31)*100).toFixed(2) %> %
+                            </td>
+                       <% } %>
+                       <% if(m=='february2024'){ %>
+                        <td>
+                            <%= parseFloat((result[i].presentDay/29)*100).toFixed(2) %> %
+                        </td>
+                   <% } %>
+                   
+                        </tr>
+                       
+                  <%  } %>
+            </tbody> 
+    </table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <style>
+        .container{
+            display: flex;
+            float: right;
+        }
+        .container i{
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid rgb(219, 206, 158);
+            background-color: rgb(190, 238, 238);
+        }
+        .page{
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid rgb(219, 206, 158);
+            background-color: rgb(190, 238, 238);
+        }
+    </style>
+    <form action="/sortidname?page=1" method="get">
+    <select name="select" id="sort">
+        <option value="studentid">ID</option>
+        <option value="firstname">Firstname</option>
+    </select><br>
+    asc<input type="radio" name="sort" value="asc">
+   desc <input type="radio" name="sort" value="desc">
+   <br><input type="submit" value="sort">
+   </form>
+  <div class="container">
+    <%if(Number(p)!=1){ %>
+   <a href="sortidname?page=1&select=<%=sortcolumn%>&<%=sortorder%>"<%if(Number(p)==1){%>onclick='return false;'}<%}%> >
+    <i class="fa-solid fa-angles-left"></i></a>
+    <a href="sortidname?page=<%=Number(p)-1 %>&select=<%=sortcolumn%>&<%=sortorder%>"<%if(Number(p)==1){%>onclick='return false;'}<%}%> ><i class="fa-solid fa-angle-left"></i></a>
+    <%}%>
+   
+    <div class="page"><%=p%></div>
+    <%if(Number(p)!=2){ %>
+    <a href="sortidname?page=<%=Number(p)+1 %>&select=<%=sortcolumn%>&<%=sortorder%>"<%if(Number(p)==last){%>onclick='return false;'}<%}%>><i class="fa-solid fa-angle-right"></i></a>
+    <a href="sortidname?page=2&select=<%=sortcolumn%>&<%=sortorder%>"<%if(Number(p)==1){%>onclick='return false;'}<%}%> ><i class="fa-solid fa-angles-right"></i></a>
+    <%}%>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <style>
+        .container{
+            display: flex;
+            float: right;
+        }
+        .container i{
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid rgb(219, 206, 158);
+            background-color: rgb(190, 238, 238);
+        }
+        .page{
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid rgb(219, 206, 158);
+            background-color: rgb(190, 238, 238);
+        }
+        a:link {
+            color: rgb(0, 0, 0);
+            }
+    </style>
+    <form action="/?page=1" method="get">
+  
+   </form>
+  <div class="container">
+    <%if(Number(p)!=1){ %>
+   <a href="columnsearch?page=1&select=<%=sortcolumn%>&sort=<%=sortorder%>"<%if(Number(p)==1){%>onclick='return false;'}<%}%> >
+    <i class="fa-solid fa-angles-left"></i></a>
+    <a href="columnsearch?page=<%=Number(p)-1 %>&select=<%=sortcolumn%>&sort=<%=sortorder%>"<%if(Number(p)==1){%>onclick='return false;'}<%}%> ><i class="fa-solid fa-angle-left"></i></a>
+    <%}%>
+   
+    <div class="page"><%=p%></div>
+    <%if(Number(p)!=10){ %>
+    <a href="columnsearch?page=<%=Number(p)+1 %>&select=<%=sortcolumn%>&sort=<%=sortorder%>"<%if(Number(p)==last){%>onclick='return false;'}<%}%>><i class="fa-solid fa-angle-right"></i></a>
+    <a href="columnsearch?page=10&select=<%=sortcolumn%>&sort=<%=sortorder%>"<%if(Number(p)==1){%>onclick='return false;'}<%}%> ><i class="fa-solid fa-angles-right"></i></a>
+    <%}%>
+</div>
+</body>
+</html>

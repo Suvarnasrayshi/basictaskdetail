@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <style>
+        .container {
+            display: flex;
+            float: right;
+        }
+
+        .container i {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .page {
+            padding: 10px;
+            margin: 5px;
+
+        }
+    </style>
+    <div class="container">
+        <%if(Number(p)!=1){ %>
+        <a href="result?page=1">
+                <i class="fa-solid fa-angles-left"></i></a>
+        <a href="result?page=<%=Number(p)-1 %>" <%if(Number(p)==1){%>onclick='return false;'}<%}%>>
+                <i class="fa-solid fa-angle-left"></i></a>
+                <%}%>
+        <div class="page">
+            
+            <%=p%>
+        </div>
+        <%if(Number(p)!=4){ %>
+        <a href="result?page=<%=Number(p)+1 %>" <%if(Number(p)==4){%>onclick='return false;'}<%}%>>
+                <i class="fa-solid fa-angle-right"></i></a>
+        <a href="result?page=4" <%if(Number(p)==4){%>onclick='return false;'}<%}%> >
+                <i class="fa-solid fa-angles-right"></i></a>
+                <%}%>
+    </div>
+</body>
+
+</html>

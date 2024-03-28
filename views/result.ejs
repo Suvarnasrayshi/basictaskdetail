@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>Suvarna Srayshi Sinha || 24DEV082</center>
+    <H2>LIST OF STUDENTS</H2>
+    <div><%- include('./resultpage',{p}); %></div>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">ID</th>
+                <th rowspan="2">Name</th>
+                <th colspan="2">Terminal</th>
+                <th colspan="2">Prelim</th>
+                <th colspan="2">Final</th>
+                <th rowspan="2">Total</th>
+                <th rowspan="2">Result</th>
+            </tr>
+            <tr>
+
+                <th>Theory</th>
+                <th>Practical</th>
+                <th>Theory</th>
+                <th>Practical</th>
+                <th>Theory</th>
+                <th>Practical</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="/record" method="get">
+                <% for(let i=0; i < result.length; i+=3 ) { %>
+                    <tr>
+                        <td>
+                            <%= result[i].studentid %>
+                        </td>
+                        <td>
+                            <%= result[i].firstname %>
+                        </td>
+                        <% for(let index=i; index < i + 3; index++ ) { %>
+                            <% if(result[index].studentid==result[i].studentid) { %>
+                                <td>
+                                    <%= result[index].practical %>
+                                </td>
+                                <td>
+                                    <%= result[index].theory %>
+                                </td>
+
+                                <% } %>
+
+                                    <% } %>
+                                        <td>
+                                            <%= Number(result[i].practical) + Number(result[i].theory) +
+                                                Number(result[i+1].practical) + Number(result[i+1].theory) +
+                                                Number(result[i+2].practical) + Number(result[i+2].theory) %>
+                                        </td>
+                                        <td>
+                                            <a href="/record/?id=<%= result[i].studentid %>" target="_blank">View</a>
+                                        </td>
+
+                    </tr>
+                    <% } %>
+            </form>
+        </tbody>
+    </table>
+</body>
+
+</html>

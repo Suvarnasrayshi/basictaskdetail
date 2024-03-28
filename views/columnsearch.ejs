@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <style>
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td,th{
+            border: 1px solid black;
+            padding: 8px;
+        }
+        .icon{
+            display: flex;
+            flex-direction: column;
+            float: right;
+        }
+      thead  a:link {
+            color: rgb(0, 0, 0);
+            }
+        
+        
+    </style>
+</head>
+<body>
+    <center>Suvarna Srayshi Sinha || 24DEV082</center>
+    <table>
+        <thead>
+            <tr>
+                <div class="align">
+                    <th>
+                    <a href="/columnsearch?select=studentid&sort=<%= sortcolumn === 'studentid' && sortorder === 'asc' ? 'desc' : 'asc'%>">ID</a>
+                   <div class="icon"> 
+                    <% if(sortcolumn === 'studentid' && sortorder === 'asc'){%>
+                    <i class="fa-solid fa-angle-up"></i>
+                    <%}%> 
+                    <% if(sortcolumn === 'studentid' && sortorder === 'desc'){%>
+                    <i class="fa-solid fa-angle-down"></i>
+                    <%}%>
+                </div>
+                </th>
+                </div>
+                <th><a href="/columnsearch?select=firstname&sort=<%= sortcolumn === 'firstname' && sortorder === 'asc' ? 'desc' : 'asc'%>">First Name</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'firstname' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'firstname' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=lastname&sort=<%= sortcolumn === 'lastname' && sortorder === 'asc' ? 'desc' : 'asc'%>">Last Name</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'lastname' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'lastname' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=city&sort=<%= sortcolumn === 'city' && sortorder === 'asc' ? 'desc' : 'asc'%>">City</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'city' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'city' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=country&sort=<%= sortcolumn === 'country' && sortorder === 'asc' ? 'desc' : 'asc'%>">Country</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'country' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'country' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=degree&sort=<%= sortcolumn === 'degree' && sortorder === 'asc' ? 'desc' : 'asc'%>">degree</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'degree' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'degree' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=college&sort=<%= sortcolumn === 'college' && sortorder === 'asc' ? 'desc' : 'asc'%>">college</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'college' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'college' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=department&sort=<%= sortcolumn === 'department' && sortorder === 'asc' ? 'desc' : 'asc'%>">department</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'department' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'department' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=parentname&sort=<%= sortcolumn === 'parentname' && sortorder === 'asc' ? 'desc' : 'asc'%>">parentname</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'parentname' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'parentname' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+                <th><a href="/columnsearch?select=gender&sort=<%= sortcolumn === 'gender' && sortorder === 'asc' ? 'desc' : 'asc'%>">gender</a>
+                    <div class="icon"> 
+                        <% if(sortcolumn === 'gender' && sortorder === 'asc'){%>
+                            <i class="fa-solid fa-angle-up"></i>
+                            <%}%> 
+                            <% if(sortcolumn === 'gender' && sortorder === 'desc'){%>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <%}%>
+                    </div>
+                </th>
+               </tr>
+            </thead>
+                <tbody> 
+                    <div>
+                        <%- include('./columnsearchpage',{p,sortorder,sortcolumn}); %>
+                    </div>
+                    <form method="post">
+               <% for(let i = 0; i < result.length; i++ ) { %>
+                    <tr>
+                        <td><%= result[i].studentid %></td>
+                        <td><%= result[i].firstname %></td>
+                        <td><%= result[i].lastname %></td>
+                        <td><%= result[i].city %></td>
+                        <td><%= result[i].country %></td>
+                        <td><%= result[i].degree %></td>
+                        <td><%= result[i].college %></td>
+                        <td><%= result[i].department %></td>
+                        <td><%= result[i].parentname %></td>
+                        <td><%= result[i].gender %></td>
+                    </tr>
+              <%  } %>
+            </form> 
+            </tbody> 
+    </table>
+</body>
+</html>

@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const path = require("path");
 const log = require('./src/routes/authentication');
+const js = require('./src/routes/jsroute');
+
 
 
 var app = express();
@@ -16,4 +18,5 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/",log);
+app.use("/",js);
 app.listen(3033);
