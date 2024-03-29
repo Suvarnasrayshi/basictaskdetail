@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Suvarna Srayshi Sinha</h4>
+    <table>
+        <!-- <thead>
+            <tr>
+                <th>Theory</th>
+                <th>Practical</th>
+                <th>Theory</th>
+                <th>Practical</th>
+                <th>Theory</th>
+                <th>Practical</th>
+            </tr>
+        </thead>
+     -->
+
+    
+
+            <% for(let i=0; i < result.length; i++ ) { %>
+             
+                        <%= result[i].firstname %><br>                 
+                        <%= result[i].lastname %><br>            
+                        <%= result[i].address_1 %><br>
+                        <%= result[i].designation %><br>                 
+                        <%= result[i].address2 %><br>            
+                        <%= result[i].email %><br>           
+                        <%= result[i].phone_number %><br>                 
+                        <%= result[i].city %><br>            
+                        <%= result[i].state %><br>          
+                         <%= result[i].gender %><br>                 
+                        <%= result[i].zipcode %><br>            
+                        <%= result[i].relationship %><br>
+                        <%= result[i].dateofbirth %><br><br>
+                        <a href="/detailform/<%=result[i].id %>">UPDATE</a>
+                <% } %>
+            
+  
+        <br />
+      
+
+    </table>
+</body>
+
+</html>

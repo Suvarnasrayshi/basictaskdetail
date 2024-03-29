@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser');
 const path = require("path");
 const log = require('./src/routes/authentication');
 const js = require('./src/routes/jsroute');
+const crud = require('./src/routes/formcrud');
+
 
 
 
@@ -19,4 +21,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/",log);
 app.use("/",js);
+app.use("/",crud);
 app.listen(3033);

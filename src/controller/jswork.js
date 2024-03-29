@@ -47,12 +47,6 @@ const getjsevent = async (req, res) =>{
     }
 };
 
-const getcitystate = async (req, res) =>{
-    {
-       
-        res.render('citystate');
-    }
-};
 
 const getsortidname = async (req, res) =>{
     const p = req.query.page || 1;
@@ -329,6 +323,33 @@ const getsortidname = async (req, res) =>{
               console.log(error);
              }
             };
+
+            const getcitystate = async (req, res) =>{ 
+                res.render('citystate');
+            }
+
+            const getstate = async (req, res) =>{
+                try {
+                 sql=`select * from state`;
+                 data = await con.promise().query(sql);
+                 result=data[0];
+                 res.send(result);
+                } catch (error) {
+                 res.send(error);
+                }
+             };
+
+             
+             const getcity = async (req, res) =>{
+                 try {
+                  sql1=`select * from city where state_id=${req.params.state}`;
+                  data = await con.promise().query(sql1);
+                  result2=data[0];
+                  res.send(result2);
+                 } catch (error) {
+                  res.send(error);
+                 }
+              };
          
-module.exports ={gettictactoe,getsortingalgo,getkukucube,getdynamic_table,getjsevent,getcitystate,getsortidname,getattendance,getresult,getrecord,getdynamicsearch
+module.exports ={gettictactoe,getsortingalgo,getkukucube,getdynamic_table,getcitystate,getjsevent,getcity,getstate,getsortidname,getattendance,getresult,getrecord,getdynamicsearch
 ,getcolumnsearch,multisearch,delimetersearch,getapifetch,apifetch};
