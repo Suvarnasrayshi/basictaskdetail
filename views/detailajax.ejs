@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic detailajaxs</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        thead{
+            color: #1f6a4f;
+            
+        }
+        a:link {
+  color: #1f6a4f;
+  text-decoration: none;
+}
+a:visited {
+  color: #1f6a4f;
+  text-decoration: none;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+    </style>
+</head>
+
+<body>
+    <table class="center">
+        <thead>
+            <tr><br>
+                <th>ID</th>
+                <th>First Name</a></th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Update</th>
+               </tr>
+            </thead>
+                <tbody> 
+    
+
+    
+
+            <% for(let i=0; i < result.length; i++ ) { %>
+             <tr>
+                     <td>  <%= result[i].id %><br>   </td> 
+                     <td>  <%= result[i].firstname %><br>   </td> 
+                     <td> <%= result[i].lastname %><br>    </td>              
+                     <td>  <%= result[i].email %><br>  </td>                    
+                                
+                    
+                       <td> <a href="/detailajax/<%=result[i].id %>">Update</a></td>
+                    </tr>
+                <% } %>
+            
+        <br />
+                </tbody>
+
+    </table>
+</body>
+
+</html>
