@@ -5,6 +5,7 @@ var app = express();
 const con = require("../config/connection");
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const { log } = require("console");
 
 app.use(cookieParser());
 app.set("view engine", "ejs");
@@ -87,7 +88,7 @@ const postpassword =async (req, res) => {
         var { password, id, activation, salt, repass } = req.body;
         password = password + salt;
         let md5pass = md5(password);
-        sql6 = `update registration set password=? where id=? and activation=?`;
+        sql6 = `update registration set password=?,created_at=nom() where id=? and activation=?`;
         await con.promise().query(sql6, [md5pass, id, activation]);
         res.json({ msg: "password created!" });
     }
@@ -128,6 +129,24 @@ const postloginat = async (req, res) =>{
     }
 };
 
+const generatetoken= async (req, res) =>{
+  try{
+    const {activation} =req.query;
+    const issue = await con.promise().query('select * from registration where activation = ?',[activation]);
+    result =issue[0][0];
+    if(issue[0].length === 0)return res.send(`<body style="background-color: black;"><div style="text-align: center; background-color: #d7fcd7; height: 70px;width: 80%;margin-left: 100px;">
+    <p style=" color: #0a4932;padding-top:20px"><b>token invalid<b></p></div></body>`)
+    let updateacticvation = randomvalue(12);
+    const updatedata = await con.promise().query('update registration set activation=?,created_at=now() where activation =?',[updateacticvation,activation]);
+    res.send(`<body style="background-color: black;"><div style="text-align: center; background-color: #d7fcd7; height: 70px;width: 80%;margin-left: 100px;"><a href="http://localhost:3033/password/?activation=${updateacticvation}&id=${result.id}" style="text-decoration: none;">  
+    <center><p style=" color: #0a4932;padding-top:20px"><b>update the password</b></center></p></a></div></body>`)
+  } 
+  catch(err)
+  {
+    console.log(err);
+  }
+}
+
 const getverify= async (req, res) =>{
     res.render('emailverify');
 };
@@ -157,4 +176,4 @@ const postverify= async (req, res) =>{
 
 
 
-module.exports ={getinsert,postinsert,getpassword,getverify,postverify,postloginat,getloginat,postpassword};
+module.exports ={getinsert,postinsert,getpassword,getverify,postverify,postloginat,getloginat,postpassword,generatetoken};

@@ -154,11 +154,14 @@
                             </td>
                             <label for="board">Name of the Board</label>
                             <input type="text" id="board" name="board[]" placeholder="enter board here">
+                            <p id=board1in></p>
                             <label for="passingyear">Passing Year</label>
-                            <input type="date" id="passingyear" name="passingyear[]"
+                            <input type="text" id="passingyear" name="passingyear[]"
                                 placeholder="enter passingyear here">
+                                <p id=passingyearin></p>
                             <label for="percentage">Percentage:</label>
                             <input type="text" id="percentage" name="percentage[]" placeholder="enter percentage here">
+                            <p id=percentagein></p>
                             <br>
                             <hr>
                         </div>
@@ -176,12 +179,16 @@
                         <div>
                             <label for="Company Name">Company Name</label>
                             <input type="text" id="CompanyName" name="CompanyName[]">
+                            <p id=CompanyNamein></p>
                             <label for="designation">Designation:</label>
                             <input type="text" id="designation1" name="designation1[]">
+                            <p id=designation1in></p>
                             <label for="From">From</label>
                             <input type="text" id="From1" name="From1[]">
+                            <p id=From1in></p>
                             <label for="To">To</label>
                             <input type="text" id="To1" name="To1[]">
+                            <p id=To1in></p>
                             <br> <br>
                         </div>
 
@@ -364,10 +371,13 @@
 
                             <label for="Name">Name</label>
                             <input type="text" id="nameref" name="nameref[]">
+                            <p id=namerefin></p>
                             <label for="Contact number">Contact number:</label>
                             <input type="text" id="Contactnumber" name="Contactnumber[]">
+                            <p id=Contactnumberin></p>
                             <label for="Relation">Relation</label>
                             <input type="text" id="Relation" name="Relation[]"><br>
+                            <p id=Relationin></p>
                         </div>
 
                     </div>
@@ -387,6 +397,7 @@
                         </td>
                         <td><label for="notice">Notice Period</label>
                             <input type="text" id="notice" name="notice">
+                            <p id=noticein></p>
                         </td>
                         <td>
                             <label for="department">Department</label>
@@ -399,12 +410,14 @@
                         <td></td>
                         <td><label for="expactedCTC">Expacted CTC</label>
                             <input type="text" id="expactedCTC" name="expactedCTC">
+                            <p id=expactedCTCin></p>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><label for="currentCTC">Current CTC</label>
                             <input type="text" id="currentCTC" name="currentCTC">
+                            <p id=currentCTCin></p>
                         </td>
 
                     </tr>
@@ -520,33 +533,91 @@
                 zipcodein.innerHTML = "<p>please enter correct phone number</p>";
                 return false;
             }
-            let board1in = document.querySelector("#board1").value;
-            console.log(board1);
+
+
+
+            let board = document.querySelector("#board").value;
+            console.log(board);
             var name = document.getElementById("board1in");
-            if (board1 == "") {
+            if (board == "") {
                 board1in.innerHTML = "<p>please enter board here</p>";
                 return false;
             }
-
-            let board2 = document.querySelector("#board2").value;
-            console.log(board2);
-            var name = document.getElementById("board2in");
-            if (board2 == "") {
-                board2in.innerHTML = "<p>please enter board here</p>";
+            let passingyear = document.querySelector("#passingyear").value;
+            console.log(passingyear);
+            var name = document.getElementById("passingyearin");
+            if (passingyear == "") {
+                passingyearin.innerHTML = "<p>please enter passingyear here</p>";
                 return false;
             }
-            let coursename1 = document.querySelector("#coursename1").value;
-            console.log(coursename1);
-            var name = document.getElementById("coursename1in");
-            if (coursename1 == "") {
-                coursename1in.innerHTML = "<p>please enter board here</p>";
+            let percentage = document.querySelector("#percentage").value;
+            console.log(percentage);
+            var name = document.getElementById("percentagein");
+            if (percentage == "") {
+                percentagein.innerHTML = "<p>please enter percentage here</p>";
                 return false;
             }
-            let coursename2 = document.querySelector("#coursename2").value;
-            console.log(coursename2);
-            var name = document.getElementById("coursename2in");
-            if (coursename2 == "") {
-                coursename2in.innerHTML = "<p>please enter coursename here</p>";
+            let CompanyName = document.querySelector("#CompanyName").value;
+            console.log(CompanyName);
+            var name = document.getElementById("CompanyNamein");
+            if (CompanyName == "") {
+                CompanyNamein.innerHTML = "<p>please enter CompanyName here</p>";
+                return false;
+            }
+            let designation1 = document.querySelector("#designation1").value;
+            console.log(designation1);
+            var name = document.getElementById("designation1in");
+            if (designation1 == "") {
+                designation1in.innerHTML = "<p>please enter designation1 here</p>";
+                return false;
+            } 
+            let From1 = document.querySelector("#From1").value;
+            console.log(From1);
+            var name = document.getElementById("From1in");
+            if (From1 == "") {
+                From1in.innerHTML = "<p>please enter From here</p>";
+                return false;
+            }
+            let To1 = document.querySelector("#To1").value;
+            console.log(To1);
+            var name = document.getElementById("To1in");
+            if (To1 == "") {
+                To1in.innerHTML = "<p>please enter To here</p>";
+                return false;
+            }
+            let Contactnumber = document.querySelector("#Contactnumber").value;
+            console.log(Contactnumber);
+            var name = document.getElementById("Contactnumberin");
+            if (Contactnumber == "") {
+                Contactnumberin.innerHTML = "<p>please enter Contactnumber here</p>";
+                return false;
+            }
+            let Relation = document.querySelector("#Relation").value;
+            console.log(Relation);
+            var name = document.getElementById("Relationin");
+            if (Relation == "") {
+                Relationin.innerHTML = "<p>please enter Relation here</p>";
+                return false;
+            }
+            let notice = document.querySelector("#notice").value;
+            console.log(notice);
+            var name = document.getElementById("noticein");
+            if (notice == "") {
+                noticein.innerHTML = "<p>please enter notice here</p>";
+                return false;
+            }
+            let expactedCTC = document.querySelector("#expactedCTC").value;
+            console.log(expactedCTC);
+            var name = document.getElementById("expactedCTCin");
+            if (expactedCTC == "") {
+                expactedCTCin.innerHTML = "<p>please enter expactedCTC here</p>";
+                return false;
+            }
+            let currentCTC = document.querySelector("#currentCTC").value;
+            console.log(currentCTC);
+            var name = document.getElementById("currentCTCin");
+            if (currentCTC == "") {
+                currentCTCin.innerHTML = "<p>please enter currentCTC here</p>";
                 return false;
             }
         }
