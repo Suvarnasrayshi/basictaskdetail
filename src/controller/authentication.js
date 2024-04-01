@@ -23,11 +23,12 @@ function randomvalue(length) {
 }
 
 
+
 const getinsert =async (req, res) => {
     {
-        if(req.cookies.token){
-            res.render('welcome');
-        }
+        // if(req.cookies.token){
+        //     res.render('welcome');
+        // }
         res.render('list');
     }
     
@@ -86,9 +87,9 @@ const getpassword = async (req, res) => {
 const postpassword =async (req, res) => {
     try {
         var { password, id, activation, salt, repass } = req.body;
-        password = password + salt;
-        let md5pass = md5(password);
-        sql6 = `update registration set password=?,created_at=nom() where id=? and activation=?`;
+        let md5pass = md5(password+salt);
+       // console.log(md5pass, id, activation);
+        sql6 = `update combineall_table.registration set password=?,created_at=now() where id=? and activation = ?`;
         await con.promise().query(sql6, [md5pass, id, activation]);
         res.json({ msg: "password created!" });
     }
@@ -116,7 +117,7 @@ const postloginat = async (req, res) =>{
             md5pass = md5(pass);
           if (result.password === md5pass) {
               var token = jwt.sign({email},`md5pass`,{expiresIn: '1h'});
-              res.cookie('token',token,{expires: new Date(Date.now()+ 90000),httpOnly:true});
+              res.cookie('token',token,{expires: new Date(Date.now()+ 360000),httpOnly:true});
              res.json({msg2: "LOGIN SUCCESSFULLY", token:token});
         }
         else {
@@ -174,6 +175,16 @@ const postverify= async (req, res) =>{
 
 };
 
+const getwelcome =async (req, res) => {
+    if(req.cookies.token){
+        res.render('welcome');
+    }
+    else{
+        res.render('list');
+    }
+}
 
 
-module.exports ={getinsert,postinsert,getpassword,getverify,postverify,postloginat,getloginat,postpassword,generatetoken};
+
+
+module.exports ={getinsert,postinsert,getpassword,getverify,postverify,postloginat,getloginat,postpassword,generatetoken,getwelcome};

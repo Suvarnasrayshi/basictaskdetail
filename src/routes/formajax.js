@@ -1,16 +1,16 @@
 var express = require("express");
 const bodyParser = require("body-parser");
 const con = require("../config/connection");
-const login = express.Router();
+const crudajax = express.Router();
 
  const {getdetailajax,detailajax,getdetailajaxid,postdetailajaxupdate,getlistdata} = require('../controller/crudajax');
 
- login.route("/getdetailajax").get(getdetailajax)
- login.route("/detailajax").post(detailajax)
- login.route("/listajax").get(getlistdata)
- login.route("/detailajax/:id").get(getdetailajaxid)
- login.route("/detailajax/:id/update").post(postdetailajaxupdate)
+ crudajax.route("/getdetailajax").get(getdetailajax)
+ crudajax.route("/detailajax").post(detailajax)
+ crudajax.route("/listajax").get(getlistdata)
+ crudajax.route("/detailajax/:id").get(getdetailajaxid)
+ crudajax.route("/detailajax/:id/update").post(postdetailajaxupdate)
 
 
 
-module.exports = login;
+module.exports = crudajax;
