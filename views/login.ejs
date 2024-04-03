@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGISTRATION</title>
+    <script type="text/javascript" src="/javascript/loginjs.js"></script>
+    <title>LOGIN</title>
     <style>
         body {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            /* background-color: #f4f4f4; */
             background-color: black;
             margin: 0;
             padding: 0;
@@ -88,31 +88,16 @@
                   <p style="font-size: 12px;">CREATE AN ACCOUNT? <b> <a href="/">REGISTER</a></b></p>
                 </center>
             </div>
+            <div id="errormsg">
+                <center>
+
+                </center>
+            </div>
         </div>
 
 
     </form>
-    <script>
-        async function logindata(){
-            let formdata = document.getElementById("myform");
-            let data = new FormData(formdata);
-            const param = new URLSearchParams(data);
-            const dataform = await new Response(param).text();
-            console.log(typeof (dataform));
-            let data2 = await fetch("http://localhost:3033/loginat",{
-                method: "POST",
-                headers:{
-                    'Content-type':'application/x-www-form-urlencoded'
-                },
-                body:dataform
-            })
-            console.log( await data2.json());
-            document.querySelector("#repassin").innerHTML = `click here to <a href=http://localhost:3033/welcome> go to dashboard</a>`;
-            result = await data2.json();
-          
-
-        }
-    </script>
+    
 </body>
 
 </html>

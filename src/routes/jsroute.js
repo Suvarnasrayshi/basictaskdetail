@@ -23,6 +23,6 @@ jswork.route("/dynamicsearch").get(getdynamicsearch)
 jswork.route("/columnsearch").get(getcolumnsearch)
 jswork.route("/multisearch").get(multisearch)
 jswork.route("/delimetersearch").get(delimetersearch)
-// jswork.route("/apifetch").get(getapifetch)
-// jswork.route("/:id").get(apifetch)
+jswork.route("/apifetch").get(getapifetch)
+jswork.route("/apifetch/:id").get(apifetch)
 module.exports = jswork;

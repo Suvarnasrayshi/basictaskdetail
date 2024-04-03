@@ -9,10 +9,6 @@ const log = require('./src/routes/authentication');
 const js = require('./src/routes/jsroute');
 const crud = require('./src/routes/formcrud');
 const crudajax = require('./src/routes/formajax');
-
-
-
-
 var app = express();
 app.use(cookieParser());
 

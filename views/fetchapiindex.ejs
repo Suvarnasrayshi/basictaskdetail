@@ -12,7 +12,6 @@
       border: 1px solid;
 
     }
-
     a:link,
     a:visited {
       color: black;
@@ -28,6 +27,7 @@
 </head>
 
 <body onload="fetchdata()">
+  <center>Suvarna Srayshi Sinha || 24DEV082</center><br>
   <div class="container">
     <table class="table">
       <thead>
@@ -63,7 +63,6 @@
         .then((response) => response.json())
         .then(data => {
           max = data.length;
-          console.log(data);
           if (data.length > 0) {
 
             var dataentry = "";
@@ -73,7 +72,7 @@
               dataentry += "<td>" + itemData.id + "</td>";
               dataentry += "<td>" + itemData.title + "</td>";
               dataentry += "<td>" + itemData.body + "</td>";
-              dataentry += "<td>" + "<a href='" + itemData.id + "'>" + "Details" + "</a></td></tr>";
+              dataentry += "<td>" + "<a href='/apifetch/" + itemData.id + "'>" + "Details" + "</a></td></tr>";
             });
             document.getElementById('data').innerHTML = dataentry;
           }
@@ -96,9 +95,6 @@
         fetchdata();
       }
     }
-
-
   </script>
 </body>
-
 </html>

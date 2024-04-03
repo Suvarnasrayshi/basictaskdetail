@@ -26,16 +26,16 @@
     </style>
      <div class="container">
         <%if(Number(p)!=1){ %>
-        <a href="/multisearch?page=1&studentid=<%=studentid%>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>">
+        <a href="/multisearch?page=1&firstname=<%=firstname%>&lastname=<%=lastname%>&city=<%=city%>&studentid=<%=studentid%>">
             <i class="fa-solid fa-angles-left"></i></a>
-            <a href="/multisearch?page=<%=Number(p)-1 %>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>">
+            <a href="/multisearch?page=<%=Number(p)-1 %>&firstname=<%=firstname%>&lastname=<%=lastname%>&city=<%=city%>&studentid=<%=studentid%>">
                 <i class="fa-solid fa-angle-left"></i></a>
                 <%}%>
             <div class="page"><%=p%></div>
             <%if(Number(p)!=last){ %>
-            <a href="/multisearch?page=<%=Number(p)+1 %>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>">
+            <a href="/multisearch?page=<%=Number(p)+1 %>&firstname=<%=firstname%>&lastname=<%=lastname%>&city=<%=city%>&studentid=<%=studentid%>">
                 <i class="fa-solid fa-angle-right"></i></a>
-            <a href="/multisearch?page=<%=last%>&firstname=<%=firstname%>&lastname=<%=lastname%>&gender=<%=gender%>&city=<%=city%>" >
+            <a href="/multisearch?page=<%=last%>&firstname=<%=firstname%>&lastname=<%=lastname%>&city=<%=city%>&studentid=<%=studentid%>" >
                 <i class="fa-solid fa-angles-right"></i></a>
                 <%}%>
       </div>

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script type="text/javascript" src="/javascript/updateformcrud.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
@@ -39,7 +40,7 @@
 </head>
 
 <body>
-    <h2>Suvarna Srayshi Sinha</h2>
+    <center>Suvarna Srayshi Sinha || 24DEV082</center>
 
     <h3>USER FORM</h3>
     <div class="table1">
@@ -50,7 +51,7 @@
                     <tr>
                         <td> <label for="fname">First name:</label>
                             <input type="text" id="fname" name="fname" value="<%=result.firstname%>">
-                            
+
                             <p id=fnamein></p>
                         <td> <label for="lname">Last name:</label>
                             <input type="text" id="lname" name="lname" value="<%=result.lastname%>">
@@ -84,7 +85,7 @@
 
                     <tr>
                         <td> <label for="phonenumber">Phone number:</label>
-                            <input type="text" name="phone" id="phone" value="<%=result.phone_number%>" >
+                            <input type="text" name="phone" id="phone" value="<%=result.phone_number%>">
                             <p id=phonein></p>
                         </td>
 
@@ -97,15 +98,21 @@
                     <tr>
 
                         <td><label for="gender">Gender</label>
-                            <input type="radio" name="gender" id="male" value="male"<%=result.gender==='male'? 'checked':''%>>Male
-                            <input type="radio" name="gender" id="female" value="female"<%=result.gender==='female'? 'checked':''%>>Female<p id=genderin></p>
+                            <input type="radio" name="gender" id="male" value="male" <%=result.gender==='male'
+                                ? 'checked' :''%>>Male
+                            <input type="radio" name="gender" id="female" value="female" <%=result.gender==='female'
+                                ? 'checked' :''%>>Female<p id=genderin></p>
                         </td>
                         <td><label for="state">State</label>
-                            <select id="state" name="state" >
-                                <option name="Gujarat" value="gujarat"<%=result.state==='gujarat'? 'selected':''%>>Gujarat</option>
-                                <option name="Delhi" value="delhi"<%=result.state==='delhi'? 'selected':''%>>Delhi</option>
-                                <option name="maharastra" value="maharastra"<%=result.state==='maharastra'? 'selected':''%>>maharastra</option>
-                                <option name="assam" value="assam"<%=result.state==='assam'? 'selected':''%>>assam</option>
+                            <select id="state" name="state">
+                                <option name="Gujarat" value="gujarat" <%=result.state==='gujarat' ? 'selected' :''%>
+                                    >Gujarat</option>
+                                <option name="Delhi" value="delhi" <%=result.state==='delhi' ? 'selected' :''%>>Delhi
+                                </option>
+                                <option name="maharastra" value="maharastra" <%=result.state==='maharastra' ? 'selected'
+                                    :''%>>maharastra</option>
+                                <option name="assam" value="assam" <%=result.state==='assam' ? 'selected' :''%>>assam
+                                </option>
                             </select><br>
                             <br>
                         </td>
@@ -114,8 +121,10 @@
                     <tr>
                         <td> <label for="relationship">Relationship Status</label>
                             <select id="relationship" name="relationship">
-                                <option name="single" value="single"<%=result.relationship==='single'? 'selected':''%>>single</option>
-                                <option name="married" value="married"<%=result.relationship==='married'? 'selected':''%>>married</option>
+                                <option name="single" value="single" <%=result.relationship==='single' ? 'selected'
+                                    :''%>>single</option>
+                                <option name="married" value="married" <%=result.relationship==='married' ? 'selected'
+                                    :''%>>married</option>
                             </select>
                         </td>
                         <td><label for="zip code">Zip code:</label>
@@ -143,29 +152,31 @@
                     </div>
                     <div class="row2">
                         <%for(let i=0 ; i<result1.length ; i++){%>
-                        <div>
-                            <td>
-                                <select id="education" name="education[]" >
-                                    <option value="SSC" name="SSC">SSC</option>
-                                    <option value="HSC" name="HSC">HSC</option>
-                                    <option value="Bachelors" name="Bachelors">Bachelors</option>
-                                    <option value="Masters" name="Masters">Masters</option>
-                                    <option value="PHD" name="PHD">PHD</option>
+                            <div>
+                                <td>
+                                    <select id="education" name="education[]">
+                                        <option value="SSC" name="SSC">SSC</option>
+                                        <option value="HSC" name="HSC">HSC</option>
+                                        <option value="Bachelors" name="Bachelors">Bachelors</option>
+                                        <option value="Masters" name="Masters">Masters</option>
+                                        <option value="PHD" name="PHD">PHD</option>
 
-                                </select>
-                            </td>
-                            <label for="board">Name of the Board</label>
-                            <input type="text" id="board" name="board[]" placeholder="enter board here" value="<%=result1[i].coursename%>">
-                            <label for="passingyear">Passing Year</label>
-                            <input type="date" id="passingyear" name="passingyear[]"
-                                placeholder="enter passingyear here" value="<%=result1[i].passingyear%>">
+                                    </select>
+                                </td>
+                                <label for="board">Name of the Board</label>
+                                <input type="text" id="board" name="board[]" placeholder="enter board here"
+                                    value="<%=result1[i].coursename%>">
+                                <label for="passingyear">Passing Year</label>
+                                <input type="date" id="passingyear" name="passingyear[]"
+                                    placeholder="enter passingyear here" value="<%=result1[i].passingyear%>">
                                 <!-- <input type="text" id="dob" name="dob" value="<%=result.dateofbirth%>"> -->
-                            <label for="percentage">Percentage:</label>
-                            <input type="text" id="percentage" name="percentage[]" placeholder="enter percentage here" value="<%=result1[i].percentage%>">
-                            <br>
-                            <hr>
-                        </div>
-                        <%}%>
+                                <label for="percentage">Percentage:</label>
+                                <input type="text" id="percentage" name="percentage[]"
+                                    placeholder="enter percentage here" value="<%=result1[i].percentage%>">
+                                <br>
+                                <hr>
+                            </div>
+                            <%}%>
                     </div>
             </div>
             </fieldset>
@@ -178,28 +189,25 @@
                     </div>
                     <div class="row1">
                         <%for(let i=0 ; i<result2.length ; i++){%>
-                        <div>
-                            <label for="Company Name">Company Name</label>
-                            <input type="text" id="CompanyName" name="CompanyName[]" value="<%=result2[i].Company_name%>">
-                            <label for="designation">Designation:</label>
-                            <input type="text" id="designation1" name="designation1[]" value="<%=result2[i].Designation%>">
-                            <label for="From">From</label>
-                            <input type="text" id="From1" name="From1[]"  value="<%=result2[i].from_d%>">
-                            <label for="To">To</label>
-                            <input type="text" id="To1" name="To1[]" value="<%=result2[i].to_d%>">
-                            <br> <br>
-                        </div>
+                            <div>
+                                <label for="Company Name">Company Name</label>
+                                <input type="text" id="CompanyName" name="CompanyName[]"
+                                    value="<%=result2[i].Company_name%>">
+                                <label for="designation">Designation:</label>
+                                <input type="text" id="designation1" name="designation1[]"
+                                    value="<%=result2[i].Designation%>">
+                                <label for="From">From</label>
+                                <input type="text" id="From1" name="From1[]" value="<%=result2[i].from_d%>">
+                                <label for="To">To</label>
+                                <input type="text" id="To1" name="To1[]" value="<%=result2[i].to_d%>">
+                                <br> <br>
+                            </div>
 
-                        <%}%>
+                            <%}%>
                     </div>
 
             </div>
             </fieldset>
-
-
-
-
-
             <table style="width:100%">
                 <tr>
                     <td>
@@ -207,63 +215,77 @@
                             <legend>LANGUAGE KNOWN</legend>
                             <table style="width:90%">
                                 <tr>
-                                    <td><input type="hidden" name="lang[]" value="<%=hindi.length!=0 && hindi[0].id%>"></td>
+                                    <td><input type="hidden" name="lang[]" value="<%=hindi.length!=0 && hindi[0].id%>">
+                                    </td>
                                     <td>
-                                        <input type="checkbox" id="hindi" name="hindi" <%=hindi.length!=0 && hindi[0].optionid===5? 'checked':''%>><label
-                                            for="hindi">HINDI</label>
+                                        <input type="checkbox" id="hindi" name="hindi" <%=hindi.length!=0 &&
+                                            hindi[0].optionid===5? 'checked' :''%>><label for="hindi">HINDI</label>
                                     </td>
                                     <td>
 
-                                        <input type="checkbox" id="hindi_r" name="hindi_r" <%=hindi[0].reade ==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="hindi_r" name="hindi_r" <%=hindi[0].reade==='1'
+                                            ? 'checked' :''%>>
                                         <label for="hindi_r">READ</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="hindi_w" name="hindi_w" <%=hindi[0].writee ==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="hindi_w" name="hindi_w" <%=hindi[0].writee==='1'
+                                            ? 'checked' :''%>>
                                         <label for="hindi_w">WRITE</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="hindi_s" name="hindi_s" <%=hindi[0].speak ==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="hindi_s" name="hindi_s" <%=hindi[0].speak==='1'
+                                            ? 'checked' :''%>>
                                         <label for="hindi_s">SPEAK</label>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td><input type="hidden" name="lang[]" value="<%=english.length!=0 && english[0].id%>"></td>
+                                    <td><input type="hidden" name="lang[]"
+                                            value="<%=english.length!=0 && english[0].id%>"></td>
                                     <td>
-                                        <input type="checkbox" id="english" name="english" <%=english.length!=0 && english[0].optionid===6? 'checked':''%>><label
+                                        <input type="checkbox" id="english" name="english" <%=english.length!=0 &&
+                                            english[0].optionid===6? 'checked' :''%>><label
                                             for="english">ENGLISH</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="english_r" name="english_r" <%=english[0].reade==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="english_r" name="english_r" <%=english[0].reade==='1'
+                                            ? 'checked' :''%>>
                                         <label for="english_r">READ</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="english_w" name="english_w" <%=english[0].writee==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="english_w" name="english_w"
+                                            <%=english[0].writee==='1' ? 'checked' :''%>>
                                         <label for="english_w">WRITE</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="english_s" name="english_s" <%=english[0].speak==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="english_s" name="english_s" <%=english[0].speak==='1'
+                                            ? 'checked' :''%>>
                                         <label for="english_s">SPEAK</label>
                                     </td>
                                 </tr>
 
                                 <tr>
 
-                                    <td><input type="hidden" name="lang[]" value="<%=gujarati.length!=0 && gujarati[0].id%>"></td>
+                                    <td><input type="hidden" name="lang[]"
+                                            value="<%=gujarati.length!=0 && gujarati[0].id%>"></td>
                                     <td>
-                                        <input type="checkbox" id="gujarati" name="gujarati" <%=gujarati.length!=0 && gujarati[0].optionid===7? 'checked':''%>><label
+                                        <input type="checkbox" id="gujarati" name="gujarati" <%=gujarati.length!=0 &&
+                                            gujarati[0].optionid===7? 'checked' :''%>><label
                                             for="gujarati">GUJARATI</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="gujarati_r" name="gujarati_r" <%=gujarati[0].reade==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="gujarati_r" name="gujarati_r"
+                                            <%=gujarati[0].reade==='1' ? 'checked' :''%>>
                                         <label for="gujarati_r">READ</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="gujarati_w" name="gujarati_w" <%=gujarati[0].writee==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="gujarati_w" name="gujarati_w"
+                                            <%=gujarati[0].writee==='1' ? 'checked' :''%>>
                                         <label for="gujarati_w">WRITE</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="gujarati_s" name="gujarati_s" <%=gujarati[0].speak==='1'? 'checked':''%>>
+                                        <input type="checkbox" id="gujarati_s" name="gujarati_s"
+                                            <%=gujarati[0].speak==='1' ? 'checked' :''%>>
                                         <label for="gujarati_s">SPEAK</label>
                                     </td>
                                 </tr>
@@ -278,89 +300,106 @@
                                 <tr>
                                     <td><input type="hidden" name="tech[]" value="<%=php.length!=0 && php[0].id%>"></td>
                                     <td>
-                                        <input type="checkbox" id="php" name="php" value="php"<%=php.length!=0 && php[0].technology==8? 'checked':''%>><label
-                                            for="php">PHP</label>
+                                        <input type="checkbox" id="php" name="php" value="php" <%=php.length!=0 &&
+                                            php[0].technology==8? 'checked' :''%>><label for="php">PHP</label>
                                     </td>
                                     <td>
-                                        <input type="radio" name="tphp" id="begineer" value="begineer"<%=php[0].tech_level===12? 'checked':''%>><label
+                                        <input type="radio" name="tphp" id="begineer" value="begineer"
+                                            <%=php[0].tech_level===12? 'checked' :''%>><label
                                             for="mediator">BEGINEER</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tphp" id="mediator" value="mediator"<%=php[0].tech_level===13? 'checked':''%>><label
+                                        <input type="radio" name="tphp" id="mediator" value="mediator"
+                                            <%=php[0].tech_level===13? 'checked' :''%>><label
                                             for="mediator">MEDIATOR</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tphp" id="expert" value="expert"<%=php[0].tech_level===14? 'checked':''%>><label
+                                        <input type="radio" name="tphp" id="expert" value="expert"
+                                            <%=php[0].tech_level===14? 'checked' :''%>><label
                                             for="expert">EXPERT</label>
 
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td><input type="hidden" name="tech[]" value="<%=oracle.length!=0 && oracle[0].id%>"></td>
+                                    <td><input type="hidden" name="tech[]"
+                                            value="<%=oracle.length!=0 && oracle[0].id%>"></td>
                                     <td>
-                                        <input type="checkbox" id="oracle" name="oracle" value="oracle"<%=oracle.length!=0 && oracle[0].technology==10? 'checked':''%>><label
+                                        <input type="checkbox" id="oracle" name="oracle" value="oracle"
+                                            <%=oracle.length!=0 && oracle[0].technology==10? 'checked' :''%>><label
                                             for="oracle">ORACLE</label>
                                     </td>
                                     <td>
-                                        <input type="radio" name="toracle" id="begineer" value="begineer"<%=oracle[0].tech_level===12? 'checked':''%>><label
+                                        <input type="radio" name="toracle" id="begineer" value="begineer"
+                                            <%=oracle[0].tech_level===12? 'checked' :''%>><label
                                             for="mediator">BEGINEER</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="toracle" id="mediator" value="mediator"<%=oracle[0].tech_level===13? 'checked':''%>><label
+                                        <input type="radio" name="toracle" id="mediator" value="mediator"
+                                            <%=oracle[0].tech_level===13? 'checked' :''%>><label
                                             for="mediator">MEDIATOR</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="toracle" id="expert" value="expert"<%=oracle[0].tech_level===14? 'checked':''%>><label
+                                        <input type="radio" name="toracle" id="expert" value="expert"
+                                            <%=oracle[0].tech_level===14? 'checked' :''%>><label
                                             for="expert">EXPERT</label>
 
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td><input type="hidden" name="tech[]" value="<%=mysql.length!=0 && mysql[0].id%>"></td>
-                                    <td>
-                                        <input type="checkbox" id="mysql" name="mysql" value="mysql"<%=mysql.length!=0 && mysql[0].technology==11? 'checked':''%>><label
-                                            for="mysql">MYSQL</label>
+                                    <td><input type="hidden" name="tech[]" value="<%=mysql.length!=0 && mysql[0].id%>">
                                     </td>
                                     <td>
-                                        <input type="radio" name="tmysql" id="begineer" value="begineer"<%=mysql[0].tech_level===12? 'checked':''%>><label
+                                        <input type="checkbox" id="mysql" name="mysql" value="mysql" <%=mysql.length!=0
+                                            && mysql[0].technology==11? 'checked' :''%>><label for="mysql">MYSQL</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="tmysql" id="begineer" value="begineer"
+                                            <%=mysql[0].tech_level===12? 'checked' :''%>><label
                                             for="mediator">BEGINEER</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tmysql" id="mediator" value="mediator"<%=mysql[0].tech_level===13? 'checked':''%>><label
+                                        <input type="radio" name="tmysql" id="mediator" value="mediator"
+                                            <%=mysql[0].tech_level===13? 'checked' :''%>><label
                                             for="mediator">MEDIATOR</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tmysql" id="expert" value="expert"<%=mysql[0].tech_level===14? 'checked':''%>><label
+                                        <input type="radio" name="tmysql" id="expert" value="expert"
+                                            <%=mysql[0].tech_level===14? 'checked' :''%>><label
                                             for="expert">EXPERT</label>
 
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input type="hidden" name="tech[]" value="<%=laravel.length!=0 && laravel[0].id%>"></td>
+                                    <td><input type="hidden" name="tech[]"
+                                            value="<%=laravel.length!=0 && laravel[0].id%>"></td>
                                     <td>
-                                        <input type="checkbox" id="laravel" name="laravel" value="laravel"<%=laravel.length!=0 && laravel[0].technology==9? 'checked':''%>><label
+                                        <input type="checkbox" id="laravel" name="laravel" value="laravel"
+                                            <%=laravel.length!=0 && laravel[0].technology==9? 'checked' :''%>><label
                                             for="laravel">LARAVEL</label>
                                     </td>
                                     <td>
-                                        <input type="radio" name="tlaravel" id="begineer" value="begineer"<%=laravel[0].tech_level===12? 'checked':''%>><label
+                                        <input type="radio" name="tlaravel" id="begineer" value="begineer"
+                                            <%=laravel[0].tech_level===12? 'checked' :''%>><label
                                             for="mediator">BEGINEER</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tlaravel" id="mediator" value="mediator"<%=laravel[0].tech_level===13? 'checked':''%>><label
+                                        <input type="radio" name="tlaravel" id="mediator" value="mediator"
+                                            <%=laravel[0].tech_level===13? 'checked' :''%>><label
                                             for="mediator">MEDIATOR</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tlaravel" id="expert" value="expert"<%=laravel[0].tech_level===14? 'checked':''%>><label
+                                        <input type="radio" name="tlaravel" id="expert" value="expert"
+                                            <%=laravel[0].tech_level===14? 'checked' :''%>><label
                                             for="expert">EXPERT</label>
 
                                     </td>
@@ -379,11 +418,12 @@
                     </div>
                     <div class="row">
                         <%for(let i=0 ; i<result3.length ; i++){%>
-                        <div>
+                            <div>
                                 <label for="Name">Name</label>
                                 <input type="text" id="nameref" name="nameref[]" value="<%=result3[i].refrencename%>">
                                 <label for="Contact number">Contact number:</label>
-                                <input type="text" id="Contactnumber" name="Contactnumber[]" value="<%=result3[i].contact%>">
+                                <input type="text" id="Contactnumber" name="Contactnumber[]"
+                                    value="<%=result3[i].contact%>">
                                 <label for="Relation">Relation</label>
                                 <input type="text" id="Relation" name="Relation[]" value="<%=result3[i].relation%>"><br>
                             </div>
@@ -400,8 +440,10 @@
                         <td>
                             <label for="location">Preferd location</label>
                             <select id="location" name="location">
-                                <option name="Gujarat" value="Gujarat"<%=result4.preferd_location==='Gujarat'? 'selected':''%>>Gujarat</option>
-                                <option name="Delhi" value="Delhi"<%=result4.preferd_location==='Delhi'? 'selected':''%>>Delhi</option>
+                                <option name="Gujarat" value="Gujarat" <%=result4.preferd_location==='Gujarat'
+                                    ? 'selected' :''%>>Gujarat</option>
+                                <option name="Delhi" value="Delhi" <%=result4.preferd_location==='Delhi' ? 'selected'
+                                    :''%>>Delhi</option>
                             </select>
                         </td>
                         <td><label for="notice">NOTICE</label>
@@ -410,8 +452,11 @@
                         <td>
                             <label for="department">Department</label>
                             <select id="department" name="department">
-                                <option name="Development" value="development"<%=result4.Department==='development'? 'selected':''%>>Development</option>
-                                <option name="Design marketing" value="Design marketing"<%=result4.Department==='Design marketing'? 'selected':''%>>Design marketing</option>
+                                <option name="Development" value="development" <%=result4.Department==='development'
+                                    ? 'selected' :''%>>Development</option>
+                                <option name="Design marketing" value="Design marketing"
+                                    <%=result4.Department==='Design marketing' ? 'selected' :''%>>Design marketing
+                                </option>
                         </td>
                     </tr>
                     <tr>
@@ -434,249 +479,6 @@
             <input type="submit" value="Save">
         </form>
     </div>
-    <script>
-
-        function validate() {
-            let fname = document.querySelector("#fname").value;
-            console.log(fname);
-            var name = document.getElementById("fnamein");
-            if (fname == "") {
-                fnamein.innerHTML = "<p>please enter the details here</p>";
-                return false;
-            }
-            else if (!/^[A-Za-z]+$/.test(fname)) {
-                fnamein.innerHTML = "<p>please enter correct name</p>";
-                return false;
-            }
-
-
-            let lname = document.querySelector("#lname").value;
-            console.log(lname);
-            var name = document.getElementById("lnamein");
-            if (lname == "") {
-                lnamein.innerHTML = "<p>please enter the last name here</p>";
-                return false;
-            }
-            else if (!/^[A-Za-z]+$/.test(lname)) {
-                lnamein.innerHTML = "<p>please enter correct last name</p>";
-                return false;
-            }
-            let designation = document.querySelector("#designation").value;
-            console.log(designation);
-            var name = document.getElementById("designationin");
-            if (designation == "") {
-                designationin.innerHTML = "<p>please enter the details here</p>";
-                return false;
-            }
-            else if (!/^[A-Za-z]+$/.test(designation)) {
-                designation.innerHTML = "<p>please enter correct designation</p>";
-                return false;
-            }
-
-
-            let phone = document.querySelector("#phone").value;
-            console.log(phone);
-            var name = document.getElementById("phonein");
-            if (phone == "") {
-                phonein.innerHTML = "<p>please enter the phone number here</p>";
-                return false;
-            }
-            else if (!/^\(?([0-9]{3})\)?([0-9]{3})?([0-9]{4})$/.test(phone)) {
-                phonein.innerHTML = "<p>please enter correct phone number</p>";
-                return false;
-            }
-
-
-            let email = document.querySelector("#email").value;
-            console.log(email);
-            var name = document.getElementById("emailin");
-            if (email == "") {
-                emailin.innerHTML = "<p>please enter the email address here</p>";
-                return false;
-            }
-            else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                .test(email)) {
-                emailin.innerHTML = "<p>please enter correct email address</p>";
-                return false;
-            }
-
-            var genderM = form.male;
-            var genderF = form.female;
-            var name = document.getElementById("genderin");
-            if (genderM.checked == false && genderF.checked == false) {
-                genderin.innerHTML = "<p>You must select male or female</p>";
-                return false;
-            }
-            let address = document.querySelector("#address").value;
-            console.log(address);
-            var name = document.getElementById("addressin");
-            if (address == "") {
-                addressin.innerHTML = "<p>please enter address here</p>";
-                return false;
-            }
-            let address2 = document.querySelector("#address2").value;
-            console.log(address2);
-            var name = document.getElementById("addressin2");
-            if (address2 == "") {
-                addressin2.innerHTML = "<p>please enter address here</p>";
-                return false;
-            }
-            let city = document.querySelector("#city").value;
-            console.log(city);
-            var name = document.getElementById("cityin");
-            if (city == "") {
-                cityin.innerHTML = "<p>please enter city here</p>";
-                return false;
-            }
-            let zipcode = document.querySelector("#zipcode").value;
-            console.log(zipcode);
-            var name = document.getElementById("zipcodein");
-            if (zipcode == "") {
-                zipcodein.innerHTML = "<p>please enter the phone number here</p>";
-                return false;
-            }
-            else if (!/^\d{6}$/.test(zipcode)) {
-                zipcodein.innerHTML = "<p>please enter correct phone number</p>";
-                return false;
-            }
-            let board1in = document.querySelector("#board1").value;
-            console.log(board1);
-            var name = document.getElementById("board1in");
-            if (board1 == "") {
-                board1in.innerHTML = "<p>please enter board here</p>";
-                return false;
-            }
-
-            let board2 = document.querySelector("#board2").value;
-            console.log(board2);
-            var name = document.getElementById("board2in");
-            if (board2 == "") {
-                board2in.innerHTML = "<p>please enter board here</p>";
-                return false;
-            }
-            let coursename1 = document.querySelector("#coursename1").value;
-            console.log(coursename1);
-            var name = document.getElementById("coursename1in");
-            if (coursename1 == "") {
-                coursename1in.innerHTML = "<p>please enter board here</p>";
-                return false;
-            }
-            let coursename2 = document.querySelector("#coursename2").value;
-            console.log(coursename2);
-            var name = document.getElementById("coursename2in");
-            if (coursename2 == "") {
-                coursename2in.innerHTML = "<p>please enter coursename here</p>";
-                return false;
-            }
-        }
-
-
-        function plus() {
-
-            var row = document.getElementsByClassName("row")[0];
-            div = document.createElement("div");
-            div.setAttribute("class", "referance")
-
-            div.innerHTML += `
-                           <div>
-                           
-                           <label for="Name">Name</label>
-                           <input type="text" id="nameref" name="nameref[]">
-                           <label for="Contact number">Contact number:</label>
-                           <input type="text" id="Contactnumber" name="Contactnumber[]">
-                           <label for="Relation">Relation</label>
-                           <input type="text" id="Relation" name="Relation[]"><br>
-                       </div>
-                                        `;
-
-            row.appendChild(div);
-        }
-        function sub() {
-            console.log("hello");
-
-            {
-
-                row = document.getElementsByClassName("row");
-                row[0].removeChild(row[0].lastElementChild);
-
-                console.log(row);
-            }
-        }
-
-        educationdetail = 2
-        function eduplus() {
-
-            var row2 = document.getElementsByClassName("row2")[0];
-            div = document.createElement("div");
-            div.setAttribute("class", "educationdetail")
-
-            div.innerHTML += `
-                           <div>
-                           
-                            <select id="education" name="education[]">
-                        <option value="SSC" name="SSC">SSC</option>
-                        <option value="HSC" name="HSC">HSC</option>
-                        <option value="Bachelors" name="Bachelors">Bachelors</option>
-                        <option value="Masters" name="Masters">Masters</option>
-                    </select>
-                </td>
-               <label for="board">Name of the Board</label>
-                <input type="text" id="board" name="board[]" placeholder="enter board here">
-                <label for="passingyear">Passing Year</label>
-                <input type="date" id="passingyear" name="passingyear[]" placeholder="enter passingyear here">
-                <label for="percentage">Percentage:</label>
-                 <input type="text" id="percentage" name="percentage[]" placeholder="enter percentage here">
-                <br><hr>
-                       </div>
-                                        `;
-            educationdetail++;
-            row2.appendChild(div);
-        }
-        function edusub() {
-            console.log("hello");
-            if (educationdetail > 2) {
-
-                row2 = document.getElementsByClassName("row2");
-                row2[0].removeChild(row2[0].lastElementChild);
-                educationdetail--;
-                console.log(row2);
-            }
-        }
-
-        function explus() {
-
-            var row1 = document.getElementsByClassName("row1")[0];
-            div = document.createElement("div");
-            div.setAttribute("class", "experience")
-
-            div.innerHTML += `
-                           <div>
-                <label for="Company Name">Company Name</label>
-                <input type="text" id="CompanyName" name="CompanyName">
-                <label for="designation">Designation:</label>
-                <input type="text" id="designation1" name="designation1">
-                <label for="From">From</label>
-                <input type="text" id="From1" name="From1">
-                <label for="To">To</label>
-                <input type="text" id="To1" name="To1">
-                <br> <br>
-            </div>
-                                        `;
-
-            row1.appendChild(div);
-        }
-        function exsub() {
-            console.log("hello");
-
-            {
-
-                row1 = document.getElementsByClassName("row1");
-                row1[0].removeChild(row1[0].lastElementChild);
-
-                console.log(row1);
-            }
-        }
-    </script>
 </body>
 
 </html>

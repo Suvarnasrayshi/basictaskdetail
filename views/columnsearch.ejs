@@ -11,7 +11,7 @@
             width: 100%;
         }
         td,th{
-            border: 1px solid black;
+            border: 1px solid  #136446;;
             padding: 8px;
         }
         .icon{
@@ -19,11 +19,16 @@
             flex-direction: column;
             float: right;
         }
-      thead  a:link {
-            color: rgb(0, 0, 0);
+      thead{
+        color: #0a3626;
             }
         
-        
+            a:link,a:visited,a:active {
+                color: #0a3626;
+                text-decoration: none;
+                }
+
+            
     </style>
 </head>
 <body>
@@ -138,7 +143,7 @@
             </thead>
                 <tbody> 
                     <div>
-                        <%- include('./columnsearchpage',{p,sortorder,sortcolumn}); %>
+                        <%- include('./partial/columnsearchpage',{p,sortorder,sortcolumn}); %>
                     </div>
                     <form method="post">
                <% for(let i = 0; i < result.length; i++ ) { %>

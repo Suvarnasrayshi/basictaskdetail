@@ -23,7 +23,7 @@
     <H3>ATTENDANCE OF STUDENTS</H3>
   
 
-    <form method="get" action="/?page=<%=p%>">
+    <form method="get" action="/multisearch">
         
         <div class="id">
     <label>ID</label>
@@ -36,7 +36,7 @@
    </form>
    <button onclick="myFunction()">Show more</button>
    <div id="myDIV">
-   <form method="get" action="/?page=<%=p%>">
+   <form method="get" action="/multisearch?page=<%=p%>">
 
 
     <label>First Name</label>
@@ -48,8 +48,8 @@
      <label>City</label>
        <input type="text" name="city" placeholder="search city here">
        
-       <label>Gender</label>
-       <input type="text" name="gender" placeholder="search gender here">
+       <!-- <label>Gender</label>
+       <input type="text" name="gender" placeholder="search gender here"> -->
 
        <label>Condition</label>
        <select name="operator">
@@ -81,7 +81,7 @@
                    
              <div>
 
-                <%- include('./multisearchpage',{p,last,limit,result,studentid,firstname,lastname,city,gender}); %> 
+                <%- include('./partial/multisearchpage',{p,last,limit,result,studentid,firstname,lastname,city,gender}); %> 
              </div>
            
                <% for(let i = 0; i < result.length; i++ ) { %>

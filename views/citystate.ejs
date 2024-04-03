@@ -4,16 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .state,
+      .city ,
+      .text{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .select {
+        margin-top: 50px;
+      }
+    </style>
   </head>
-  <!-- <body> -->
   <body onload="loading()">
+    <center>Suvarna Srayshi Sinha || 24DEV082</center>
     <div class="select">
+      <div class="text">Select the state from the given below dropdown and then get the cities which are prsent in that state</div><br>
       <div class="state">
         <label for="state">state</label>
         <select name="state" id="state" onchange="cityrender(this.value)">
           <option value="select">select</option>
         </select>
       </div>
+      <br />
       <div class="city">
         <label for="city">city</label>
         <select name="city" id="city">
@@ -27,13 +41,11 @@
         xhttp.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
             var state = document.getElementById("state");
-            var r =JSON.parse(this.response);
-            console.log(r);
-             r.forEach((element) => {
+            var r = JSON.parse(this.response);
+            r.forEach((element) => {
               var option = document.createElement("option");
               option.setAttribute("value", `${element.id}`);
               option.innerHTML = `${element.name}`;
-            //   console.log(option);
               state.appendChild(option);
             });
           }
@@ -51,13 +63,10 @@
               city.removeChild(child);
               child = city.lastElementChild;
             }
-            console.log(this.response);
-
             JSON.parse(this.response).forEach((element) => {
               var option = document.createElement("option");
               option.setAttribute("value", `${element.id}`);
               option.innerHTML = `${element.city_name}`;
-              console.log(option);
               city.appendChild(option);
             });
           }

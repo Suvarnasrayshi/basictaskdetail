@@ -6,51 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style> 
-
+<style>
     input[type=submit] {
-      background-color: #61b6b0;
-      border: none;
-      color: white;
-      padding: 16px 32px;
-      text-decoration: none;
-      margin: 4px 2px;
-      cursor: pointer;
+        background-color: #61b6b0;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
     }
-    </style>
+</style>
+
 <body>
     <center>Suvarna Srayshi Sinha || 24DEV082</center>
     <form action="dynamicsearch?page=1" method="get">
-    <center>  <b> <label style="color: #61b6b0;font-size: 30px;">Query</label> </b><input type="text" name="textquery" 
-        style="width: 50%; height: 50px;border-radius: 20px;">
+        <center> <b> <label style="color: #61b6b0;font-size: 30px;">Query</label> </b><input type="text"
+                name="textquery" style="width: 50%; height: 50px;border-radius: 20px;">
 
-        <input type="submit" value="search"></center> <br><br>
+            <input type="submit" value="search">
+        </center> <br><br>
     </form>
-   <% if(result.length !=0){%>
-        <div><%- include('./dynamicsearchpage',{p,last}) %></div>
-  <br><br> <br>
-    
-    <table>
-        <thead>
-            <tr>
-                <% for(let i=0 ; i<key.length ; i++) {%>
-                    <th>
-                        <%=key[i]%>
-                    </th>
-                    <%}%>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let i=0 ; i<result.length ; i++) {%>
+    <% if(result.length !=0){%>
+        <p style="display: flex;align-items: center;justify-content: center;"><b style="color: #61b6b0"> Query: </b>
+            <%= sql %>
+        </p>
+        <div><%- include('./partial/dynamicsearchpage',{p,last}) %></div>
+        <br><br> <br>
+        <table>
+            <thead>
                 <tr>
-                    <% for(let j=0 ; j<key.length ; j++) {%>
-                        <td><%=  result[i][key[j]]%></td>
-                        <%}%>  
+                    <% for(let i=0 ; i<key.length ; i++) {%>
+                        <th>
+                            <%=key[i]%>
+                        </th>
+                        <%}%>
                 </tr>
-                <%}%>
-        </tbody>
-    </table>
-    <%}%>
+            </thead>
+            <tbody>
+                <% for(let i=0 ; i<result.length ; i++) {%>
+                    <tr>
+                        <% for(let j=0 ; j<key.length ; j++) {%>
+                            <td>
+                                <%= result[i][key[j]]%>
+                            </td>
+                            <%}%>
+                    </tr>
+                    <%}%>
+            </tbody>
+        </table>
+        <%}%>
 </body>
 
 </html>
