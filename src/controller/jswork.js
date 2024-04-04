@@ -11,9 +11,9 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const getdynamic_table = async (req, res) => {
+const getdynamictable = async (req, res) => {
   {
-    res.render("dynamic_table");
+    res.render("dynamictable");
   }
 };
 
@@ -82,19 +82,16 @@ const getresult = async (req, res) => {
   const offset = (p - 1) * limit;
 
   const sql = `select e.studentid,s.firstname,t.examname,sum(e.ob_theory)as theory,sum(e.ob_practical)as practical,
-              sum(e.ob_practical + e.ob_theory) as total
-              from exam_master as e inner join student_master as s on e.studentid=s.studentid inner join exam_type as t where
-               e.examtypeid=t.examtypeid  group by t.examtypeid,s.studentid order by e.studentid limit ${limit} offset ${offset}`;
+              sum(e.ob_practical + e.ob_theory) as total from exam_master as e inner join student_master as s on e.studentid=s.studentid 
+              inner join exam_type as t where e.examtypeid=t.examtypeid  group by t.examtypeid,s.studentid order by e.studentid limit ${limit} offset ${offset}`;
   con.query(sql, (err, result) => {
     if (err) console.log(err);
-
     else res.render("result", { result, p });
   });
 };
 
 const getrecord = async (req, res) => {
   const id = req.query.id;
-
 
   const sql = `select s.studentid, s.firstname,sub.subname,e.examtypeid,e.ob_theory as theory,e.ob_practical as practical
      from student_master as s inner join exam_master as e on s.studentid=e.studentid inner join subject_master as sub on sub.subjectid=e.subjectid where 
@@ -117,7 +114,7 @@ const getdynamicsearch = async (req, res) => {
     if (req.query.textquery) {
       const p = req.query.page || 1;
       let sql = req.query.textquery;
-   
+
       con.query(sql, (err, result) => {
         if (err) console.log(err);
         else {
@@ -125,7 +122,6 @@ const getdynamicsearch = async (req, res) => {
           const last = Math.ceil(result.length / limit);
           const offset = (Number(p) - 1) * limit;
           const sql1 = sql + ` limit ${limit} offset ${offset}`;
-     
 
           const key = Object.keys(result[0]);
           con.query(sql1, (err, result) => {
@@ -164,7 +160,7 @@ const getcolumnsearch = async (req, res) => {
 const multisearch = async (req, res) => {
   const p = req.query.page || 1;
   const limit = 10;
-   
+
   const offset = (p - 1) * limit;
   const studentid = req.query.studentid;
   const firstname = req.query.firstname;
@@ -176,7 +172,6 @@ const multisearch = async (req, res) => {
   try {
     if (studentid) {
       var sql = `select * from student_master where studentid=${studentid} limit ${limit} offset ${offset}`;
- 
     } else {
       let array = [];
       if (firstname) array.push(`firstname = '${firstname}'`);
@@ -193,12 +188,22 @@ const multisearch = async (req, res) => {
     con.query(sql, (err, result) => {
       if (err) console.log(err);
       else {
-       
-        var length =result
+        var length = result;
         const limit = 10;
         const last = Math.ceil(length / 10);
 
-        res.render("multisearch", { result, studentid, firstname,lastname, city, gender, p, last,limit,offset});
+        res.render("multisearch", {
+          result,
+          studentid,
+          firstname,
+          lastname,
+          city,
+          gender,
+          p,
+          last,
+          limit,
+          offset,
+        });
       }
     });
   } catch (err) {
@@ -269,7 +274,6 @@ const delimetersearch = async (req, res) => {
 
   if (sql.includes("where")) sql = sql.slice(0, -4);
 
-
   con.query(sql, (err, result) => {
     if (err) console.log(err);
     else {
@@ -321,5 +325,6 @@ const getcity = async (req, res) => {
     res.send(error);
   }
 };
-module.exports = {gettictactoe, getsortingalgo, getkukucube, getdynamic_table, getcitystate, getjsevent, getcity, getstate, getsortidname, getattendance, getresult, getrecord, getdynamicsearch
-  , getcolumnsearch, multisearch, delimetersearch, getapifetch, apifetch};
+module.exports = {
+  gettictactoe, getsortingalgo, getkukucube, getdynamictable, getcitystate, getjsevent, getcity, getstate, getsortidname, getattendance, getresult, 
+  getrecord, getdynamicsearch, getcolumnsearch, multisearch, delimetersearch, getapifetch, apifetch};

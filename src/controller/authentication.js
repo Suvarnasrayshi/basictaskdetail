@@ -99,9 +99,9 @@ const postloginat = async (req, res) => {
                     expires: new Date(Date.now() + 360000),
                     httpOnly: true,
                 });
-                res.json({ msg: `<a href=http://localhost:3033/dashboard> <b style="margin-left: 20px;">DASHBOARD</b></p></a> `, token: token });
+                res.json({ msg: `<a href=http://localhost:3036/dashboard> <b style="margin-left: 20px;">DASHBOARD</b></p></a> `, token: token });
             } else {
-                res.json({ msg: `<a href=http://localhost:3033/welcome> <b style="color: #e62828;">INCORRECT LOGIN CREDENTIAL</b></p></a> ` });
+                res.json({ msg: `<a href=http://localhost:3036/welcome> <b style="color: #e62828;">INCORRECT LOGIN CREDENTIAL</b></p></a> ` });
             }
         }
     } catch (err) {
@@ -126,7 +126,7 @@ const generatetoken = async (req, res) => {
                 "update registration set activation=?,created_at=now() where activation =?",
                 [updateacticvation, activation]
             );
-        res.send(`<body style="background-color: black;"><div style="text-align: center; background-color: #d7fcd7; height: 70px;width: 80%;margin-left: 100px;"><a href="http://localhost:3033/password/?activation=${updateacticvation}&id=${result.id}" style="text-decoration: none;">  
+        res.send(`<body style="background-color: black;"><div style="text-align: center; background-color: #d7fcd7; height: 70px;width: 80%;margin-left: 100px;"><a href="http://localhost:3036/password/?activation=${updateacticvation}&id=${result.id}" style="text-decoration: none;">  
     <center><p style=" color: #0a4932;padding-top:20px"><b>update the password</b></center></p></a></div></body>`);
     } catch (err) {
         console.log(err);

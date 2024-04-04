@@ -36,7 +36,7 @@ async function createpassword() {
   const dataform = await new Response(param).text();
   console.log(typeof dataform);
 
-  let data2 = await fetch("http://localhost:3033/password", {
+  let data2 = await fetch("http://localhost:3036/password", {
     method: "POST",
     headers: {
       "Content-type": "application/x-www-form-urlencoded",

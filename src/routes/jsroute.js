@@ -3,14 +3,14 @@ const bodyParser = require("body-parser");
 const con = require("../config/connection");
 const jswork = express.Router();
 
-const { gettictactoe, getsortingalgo, getkukucube, getdynamic_table, getjsevent, getsortidname, getattendance, getresult, getrecord, getdynamicsearch, multisearch
+const { gettictactoe, getsortingalgo, getkukucube, getdynamictable, getjsevent, getsortidname, getattendance, getresult, getrecord, getdynamicsearch, multisearch
     , getcolumnsearch, delimetersearch, getapifetch, apifetch, getcity, getstate, getcitystate } = require('../controller/jswork');
 
 
 jswork.route("/citystate").get(getcitystate)
 jswork.route("/state").get(getstate)
 jswork.route("/city/:state").get(getcity)
-jswork.route("/dynamic_table").get(getdynamic_table);
+jswork.route("/dynamictable").get(getdynamictable);
 jswork.route("/kukucube").get(getkukucube)
 jswork.route("/sortingalgo").get(getsortingalgo)
 jswork.route("/tictactoe").get(gettictactoe)
