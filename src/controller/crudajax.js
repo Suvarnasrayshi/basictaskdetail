@@ -206,6 +206,7 @@ const getdetailajaxid = async (req, res) => {
     result = data[0][0];
     result1 = data1[0];
     result2 = data2[0];
+    console.log(result1);
     result3 = data3[0];
     result4 = data4[0][0];
     res.render("updateajax", { result, result1, result2, result3, result4, result5 })

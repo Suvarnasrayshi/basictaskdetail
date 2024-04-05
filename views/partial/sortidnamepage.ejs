@@ -43,7 +43,7 @@
     <div class="page"><%=p%></div>
     <%if(Number(p)!=2){ %>
     <a href="sortidname?page=<%=Number(p)+1 %>&select=<%=sortcolumn%>&<%=sortorder%>"<%if(Number(p)==last){%>onclick='return false;'}<%}%>><i class="fa-solid fa-angle-right"></i></a>
-    <a href="sortidname?page=2&select=<%=sortcolumn%>&<%=sortorder%>"<%if(Number(p)==1){%>onclick='return false;'}<%}%> ><i class="fa-solid fa-angles-right"></i></a>
+    <a href="sortidname?page=2&select=<%=sortcolumn%>&<%=sortorder%>"<%if(Number(p)==last){%>onclick='return false;'}<%}%> ><i class="fa-solid fa-angles-right"></i></a>
     <%}%>
 </div>
 </body>

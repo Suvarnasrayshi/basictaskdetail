@@ -136,8 +136,9 @@
 
                     <tr>
                         <td><label for="dob">Date Of Birth</label>
-                            <input type="date" id="dob" name="dob" value="<%=result.dateofbirth%>">
+                            <input type="text" id="dob" name="dob" value="<%= JSON.stringify(result.dateofbirth).slice(1,11) %>">
                             <p id=dobin></p>
+                            
                         </td>
                     </tr>
                 </table>
@@ -155,10 +156,10 @@
                             <div>
                                 <td>
                                     <select id="education" name="education[]">
-                                        <option value="SSC" name="SSC">SSC</option>
-                                        <option value="HSC" name="HSC">HSC</option>
-                                        <option value="Bachelors" name="Bachelors">Bachelors</option>
-                                        <option value="Masters" name="Masters">Masters</option>
+                                        <option value="SSC" name="SSC" <%=result1[i].typeofed === "SSC" ? 'selected' : ''%>>SSC</option>
+                                        <option value="HSC" name="HSC" <%=result1[i].typeofed === "HSC" ? 'selected' : ''%>>HSC</option>
+                                        <option value="Bachelors" name="Bachelors" <%=result1[i].typeofed === "Bachelors" ? 'selected' : ''%>>Bachelors</option>
+                                        <option value="Masters" name="Masters" <%=result1[i].typeofed === "Masters" ? 'selected' : ''%>>Masters</option>
                                         <option value="PHD" name="PHD">PHD</option>
 
                                     </select>
@@ -167,9 +168,9 @@
                                 <input type="text" id="board" name="board[]" placeholder="enter board here"
                                     value="<%=result1[i].coursename%>">
                                 <label for="passingyear">Passing Year</label>
-                                <input type="date" id="passingyear" name="passingyear[]"
-                                    placeholder="enter passingyear here" value="<%=result1[i].passingyear%>">
-                                <!-- <input type="text" id="dob" name="dob" value="<%=result.dateofbirth%>"> -->
+                                <input type="text" id="passingyear" name="passingyear[]"
+                                    placeholder="enter passingyear here" value="<%= JSON.stringify(result1[i].passingyear).slice(1,11) %>">
+                                    
                                 <label for="percentage">Percentage:</label>
                                 <input type="text" id="percentage" name="percentage[]"
                                     placeholder="enter percentage here" value="<%=result1[i].percentage%>">
@@ -197,9 +198,10 @@
                                 <input type="text" id="designation1" name="designation1[]"
                                     value="<%=result2[i].Designation%>">
                                 <label for="From">From</label>
-                                <input type="text" id="From1" name="From1[]" value="<%=result2[i].from_d%>">
+                                <input type="text" id="From1" name="From1[]" value="<%= JSON.stringify(result2[i].from_d).slice(1,11) %>">
+                                
                                 <label for="To">To</label>
-                                <input type="text" id="To1" name="To1[]" value="<%=result2[i].to_d%>">
+                                <input type="text" id="To1" name="To1[]" value="<%= JSON.stringify(result2[i].to_d).slice(1,11) %>">
                                 <br> <br>
                             </div>
 

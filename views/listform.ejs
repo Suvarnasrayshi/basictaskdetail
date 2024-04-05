@@ -126,7 +126,7 @@
 
                     <tr>
                         <td><label for="dob">Date Of Birth</label>
-                            <input type="date" id="dob" name="dob">
+                            <input type="text" id="dob" name="dob">
                             <p id=dobin></p>
                         </td>
                     </tr>
@@ -159,7 +159,7 @@
                                     <input type="text" id="board" name="board[]" placeholder="enter board here">
                                     <span id=board1in></span></td>
                                   <td>  <label for="passingyear">Passing Year</label>
-                                    <input type="date" id="passingyear" name="passingyear[]"
+                                    <input type="text" id="passingyear" name="passingyear[]"
                                         placeholder="enter passingyear here">
                                         <span id=passingyearin></span></td>
                                     <td><label for="percentage">Percentage:</label>
@@ -280,22 +280,22 @@
                             <table style="width:90%">
                                 <tr>
                                     <td>
-                                        <input type="checkbox" id="php" name="php" value="php"><label
-                                            for="php">PHP</label>
+                                        <input type="checkbox" id="php" name="php" value="php"
+                                            onchange="validate()"><label for="php">PHP</label>
                                     </td>
                                     <td>
-                                        <input type="radio" name="tphp" id="begineer" value="begineer"><label
-                                            for="mediator">BEGINEER</label>
+                                        <input type="radio" name="tphp" id="begineer" class="phpb" value="begineer"
+                                            onchange="validate()"><label for="mediator">BEGINEER</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tphp" id="mediator" value="mediator"><label
-                                            for="mediator">MEDIATOR</label>
+                                        <input type="radio" name="tphp" id="mediator" class="phpm" value="mediator"
+                                            onchange="validate()"><label for="mediator">MEDIATOR</label>
 
                                     </td>
                                     <td>
-                                        <input type="radio" name="tphp" id="expert" value="expert"><label
-                                            for="expert">EXPERT</label>
+                                        <input type="radio" name="tphp" id="expert" class="phpe" value="expert"
+                                            onchange="validate()"><label for="expert">EXPERT</label>
 
                                     </td>
                                 </tr>
@@ -303,21 +303,21 @@
                                 <tr>
                                     <td>
                                         <input type="checkbox" id="oracle" name="oracle" value="oracle"><label
-                                            for="oracle">ORACLE</label>
+                                            for="oracle" onchange="validate()">ORACLE</label>
                                     </td>
                                     <td>
                                         <input type="radio" name="toracle" id="begineer" value="begineer"><label
-                                            for="mediator">BEGINEER</label>
+                                            for="mediator" onchange="validate()">BEGINEER</label>
 
                                     </td>
                                     <td>
                                         <input type="radio" name="toracle" id="mediator" value="mediator"><label
-                                            for="mediator">MEDIATOR</label>
+                                            for="mediator" onchange="validate()">MEDIATOR</label>
 
                                     </td>
                                     <td>
                                         <input type="radio" name="toracle" id="expert" value="expert"><label
-                                            for="expert">EXPERT</label>
+                                            for="expert" onchange="validate()">EXPERT</label>
 
                                     </td>
                                 </tr>
@@ -325,42 +325,42 @@
                                 <tr>
                                     <td>
                                         <input type="checkbox" id="mysql" name="mysql" value="mysql"><label
-                                            for="mysql">MYSQL</label>
+                                            for="mysql" onchange="validate()">MYSQL</label>
                                     </td>
                                     <td>
                                         <input type="radio" name="tmysql" id="begineer" value="begineer"><label
-                                            for="mediator">BEGINEER</label>
+                                            for="mediator" onchange="validate()">BEGINEER</label>
 
                                     </td>
                                     <td>
                                         <input type="radio" name="tmysql" id="mediator" value="mediator"><label
-                                            for="mediator">MEDIATOR</label>
+                                            for="mediator" onchange="validate()">MEDIATOR</label>
 
                                     </td>
                                     <td>
                                         <input type="radio" name="tmysql" id="expert" value="expert"><label
-                                            for="expert">EXPERT</label>
+                                            for="expert" onchange="validate()">EXPERT</label>
 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <input type="checkbox" id="laravel" name="laravel" value="laravel"><label
-                                            for="laravel">LARAVEL</label>
+                                            for="laravel" onchange="validate()">LARAVEL</label>
                                     </td>
                                     <td>
                                         <input type="radio" name="tlaravel" id="begineer" value="begineer"><label
-                                            for="mediator">BEGINEER</label>
+                                            for="mediator" onchange="validate()">BEGINEER</label>
 
                                     </td>
                                     <td>
                                         <input type="radio" name="tlaravel" id="mediator" value="mediator"><label
-                                            for="mediator">MEDIATOR</label>
+                                            for="mediator" onchange="validate()">MEDIATOR</label>
 
                                     </td>
                                     <td>
                                         <input type="radio" name="tlaravel" id="expert" value="expert"><label
-                                            for="expert">EXPERT</label>
+                                            for="expert" onchange="validate()">EXPERT</label>
 
                                     </td>
                                 </tr>
@@ -652,6 +652,87 @@
                 gujaratispeakcheck.disabled=true;
             }
 
+            var phpcheck = document.querySelector('input[name="php"]');
+            var begincheck = document.querySelector('input[name="tphp"][value="begineer"]');
+            var medcheck = document.querySelector('input[name="tphp"][value="mediator"]');
+            var expertcheck = document.querySelector('input[name="tphp"][value="expert"]');
+            
+            if (phpcheck.checked) {
+                begincheck.disabled = false;
+                medcheck.disabled = false;
+                expertcheck.disabled = false;
+            } else {
+                begincheck.checked = false;
+                medcheck.checked = false;
+                expertcheck.checked = false;
+                
+                begincheck.disabled = true;
+                medcheck.disabled = true;
+                expertcheck.disabled = true;
+            }
+            var phpcheck = document.querySelector('input[name="php"]').addEventListener("change", validate);
+
+
+            var oraclecheck = document.querySelector('input[name="oracle"]');
+            var beginchecko = document.querySelector('input[name="toracle"][value="begineer"]');
+            var medchecko = document.querySelector('input[name="toracle"][value="mediator"]');
+            var expertchecko = document.querySelector('input[name="toracle"][value="expert"]');
+            
+            if (oraclecheck.checked) {
+                beginchecko.disabled = false;
+                medchecko.disabled = false;
+                expertchecko.disabled = false;
+            } else {
+                beginchecko.checked = false;
+                medchecko.checked = false;
+                expertchecko.checked = false;
+                
+                beginchecko.disabled = true;
+                medchecko.disabled = true;
+                expertchecko.disabled = true;
+            }
+            var oraclecheck = document.querySelector('input[name="oracle"]').addEventListener("change", validate);
+            var mysqlcheck = document.querySelector('input[name="mysql"]');
+            var begincheckm = document.querySelector('input[name="tmysql"][value="begineer"]');
+            var medcheckm = document.querySelector('input[name="tmysql"][value="mediator"]');
+            var expertcheckm = document.querySelector('input[name="tmysql"][value="expert"]');
+            
+            if (mysqlcheck.checked) {
+                begincheckm.disabled = false;
+                medcheckm.disabled = false;
+                expertcheckm.disabled = false;
+            } else {
+                begincheckm.checked = false;
+                medcheckm.checked = false;
+                expertcheckm.checked = false;
+                
+                begincheckm.disabled = true;
+                medcheckm.disabled = true;
+                expertcheckm.disabled = true;
+            }
+            var mysqlcheck = document.querySelector('input[name="mysql"]').addEventListener("change", validate);
+            
+
+
+            var laravelcheck = document.querySelector('input[name="laravel"]');
+            var begincheckl = document.querySelector('input[name="tlaravel"][value="begineer"]');
+            var medcheckl = document.querySelector('input[name="tlaravel"][value="mediator"]');
+            var expertcheckl = document.querySelector('input[name="tlaravel"][value="expert"]');
+            
+            if (laravelcheck.checked) {
+                begincheckl.disabled = false;
+                medcheckl.disabled = false;
+                expertcheckl.disabled = false;
+            } else {
+                begincheckl.checked = false;
+                medcheckl.checked = false;
+                expertcheckl.checked = false;
+                
+                begincheckl.disabled = true;
+                medcheckl.disabled = true;
+                expertcheckl.disabled = true;
+            }
+            var laravelcheck = document.querySelector('input[name="laravel"]').addEventListener("change", validate);
 
             let Contactnumber = document.querySelector("#Contactnumber").value;
             console.log(Contactnumber);
@@ -751,7 +832,7 @@
                                     <input type="text" id="board" name="board[]" placeholder="enter board here">
                                     <span id=board1in></span></td>
                                   <td>  <label for="passingyear">Passing Year</label>
-                                    <input type="date" id="passingyear" name="passingyear[]"
+                                    <input type="text" id="passingyear" name="passingyear[]"
                                         placeholder="enter passingyear here">
                                         <span id=passingyearin></span></td>
                                     <td><label for="percentage">Percentage:</label>

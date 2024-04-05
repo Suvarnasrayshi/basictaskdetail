@@ -4,10 +4,10 @@ const con = require("../config/connection");
 const crudauth = express.Router();
 
 const { postdetailform, getdetailform, detailform, getdetail } = require('../controller/crudauth');
-
-crudauth.route("/getdetail").get(getdetail)
-crudauth.route("/detailform").post(detailform)
-crudauth.route("/detailform/:id").get(getdetailform)
-crudauth.route("/detailform/:id/update").post(postdetailform)
+const validuser = require("../middleware/token");
+crudauth.route("/getdetail").get(validuser,getdetail)
+crudauth.route("/detailform").post(validuser,detailform)
+crudauth.route("/detailform/:id").get(validuser,getdetailform)
+crudauth.route("/detailform/:id/update").post(validuser,postdetailform)
 
 module.exports = crudauth;

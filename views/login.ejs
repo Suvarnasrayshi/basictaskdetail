@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="/javascript/loginjs.js"></script>
     <title>LOGIN</title>
     <style>
         body {
@@ -18,45 +17,52 @@
             height: 100vh;
             color: #0a3626;
         }
-        .container{
+
+        .container {
             background-color: #d7fcd7;
             padding: 50px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .form input{
+
+        .form input {
             width: 100%;
             padding: 2px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        .form{
+
+        .form {
             margin-bottom: 10px;
         }
-        .button{
+
+        .button {
             padding: 9px 14px;
-            background-color: #0a3626;;
+            background-color: #0a3626;
+            ;
             color: #ffffff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
-        #repassin{
+
+        #repassin {
             margin-top: 8px;
             margin-left: 30px;
             color: #1f6a4f;
         }
+
         a:link {
-        color: #1f6a4f;
-        text-decoration: none;
-        font-size: 12px;
-    }
-        
-      a:visited {
-        color: #1f6a4f;
-        text-decoration: none;
-        font-size: 12px;
-      }
+            color: #1f6a4f;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        a:visited {
+            color: #1f6a4f;
+            text-decoration: none;
+            font-size: 12px;
+        }
     </style>
 </head>
 
@@ -69,23 +75,23 @@
             <div class="form">
 
                 <center>
-        
+
                     <h3>LOGIN</h3>
                 </center>
-                
+
                 <input type="text" id="email" name="email" placeholder="Email">
             </div>
             <div class="form">
-                
+
                 <input type="text" id="password" name="password" placeholder="Password">
             </div>
-            
+
             <input type="button" class="button" name="LOGIN" value="LOGIN" onclick="logindata()">
             <div id="repassin">
                 <center>
-                    
+
                     <a href="/verify">FORGOT PASSWORD?</a><BR>
-                  <p style="font-size: 12px;">CREATE AN ACCOUNT? <b> <a href="/">REGISTER</a></b></p>
+                    <p style="font-size: 12px;">CREATE AN ACCOUNT? <b> <a href="/">REGISTER</a></b></p>
                 </center>
             </div>
             <div id="errormsg">
@@ -97,7 +103,30 @@
 
 
     </form>
-    
+    <script>
+
+        async function logindata() {
+            let formdata = document.getElementById("myform");
+            let data = new FormData(formdata);
+            const param = new URLSearchParams(data);
+            const dataform = await new Response(param).text();
+            console.log(typeof (dataform));
+            let data2 = await fetch("http://localhost:3036/loginat", {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded'
+                },
+                body: dataform
+            })
+            // console.log( await data2.json());
+            // document.querySelector("#repassin").innerHTML = `<p style  ="font-size:14px">click here to go to <a href=http://localhost:3036/welcome> <b>DASHBOARD</b></p></a>`;
+            result = await data2.json();
+            document.querySelector("#repassin").innerHTML = result.msg;
+
+
+
+        }
+    </script>
 </body>
 
 </html>

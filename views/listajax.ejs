@@ -211,7 +211,7 @@
                         <tr>
                             <td>
                                 <label for="dob">Date Of Birth</label>
-                                <input type="date" id="dob" name="dob" />
+                                <input type="text" id="dob" name="dob" />
                                 <p id="dobin"></p>
                             </td>
                         </tr>
@@ -249,7 +249,7 @@
                                         <span id=board1in></span>
                                     </td>
                                     <td> <label for="passingyear">Passing Year</label>
-                                        <input type="date" id="passingyear" name="passingyear[]"
+                                        <input type="text" id="passingyear" name="passingyear[]"
                                             placeholder="enter passingyear here">
                                         <span id=passingyearin></span>
                                     </td>
@@ -679,7 +679,7 @@ if(currentsection == 1){
             let passingyear = document.querySelector("#passingyear").value;
             console.log(passingyear);
             var name = document.getElementById("passingyearin");
-            if (passingyear == "") {
+            if (passingyear == "") { 
                 passingyearin.innerHTML = "<p>please enter passingyear here</p>";
                 return false;
             }
@@ -972,7 +972,7 @@ if(currentsection == 1){
                <label for="board">Name of the Board</label>
                 <input type="text" id="board" name="board[]" placeholder="enter board here">
                 <label for="passingyear">Passing Year</label>
-                <input type="date" id="passingyear" name="passingyear[]" placeholder="enter passingyear here">
+                <input type="text   " id="passingyear" name="passingyear[]" placeholder="enter passingyear here">
                 <label for="percentage">Percentage:</label>
                  <input type="text" id="percentage" name="percentage[]" placeholder="enter percentage here">
                 <br>

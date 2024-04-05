@@ -96,7 +96,7 @@ const postloginat = async (req, res) => {
             if (result.password === md5pass) {
                 var token = jwt.sign({ email }, `md5pass`, { expiresIn: "1h" });
                 res.cookie("token", token, {
-                    expires: new Date(Date.now() + 360000),
+                    expires: new Date(Date.now() + 3600000),
                     httpOnly: true,
                 });
                 res.json({ msg: `<a href=http://localhost:3036/dashboard> <b style="margin-left: 20px;">DASHBOARD</b></p></a> `, token: token });
